@@ -1,13 +1,16 @@
+use helper::{fib_rec, js_array_to_vec, quick_sort, vec_to_js_array};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use wasm_bindgen::prelude::*;
-use web_sys::console;
+use web_sys::{console, js_sys::Array};
+
+mod helper;
 
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
-#[wasm_bindgen]
+#[wasm_bindgen(js_name = helloWorld)]
 pub fn hello_world() {
     console::log_1(&JsValue::from_str("Hello World!"));
 }
@@ -23,7 +26,7 @@ pub fn fib(n: i32) -> i32 {
 }
 
 /// 返回数组
-#[wasm_bindgen]
+#[wasm_bindgen(js_name = sendArrayToJs)]
 pub fn send_array_to_js() -> Box<[JsValue]> {
     vec![
         JsValue::NULL,
@@ -45,7 +48,7 @@ pub struct Obj {
 }
 
 /// 返回对象
-#[wasm_bindgen]
+#[wasm_bindgen(js_name = sendObjToJs)]
 pub fn send_obj_to_js() -> JsValue {
     let mut map: HashMap<u32, String> = HashMap::new();
     map.insert(0, String::from("ex"));
@@ -85,10 +88,30 @@ extern "C" {
 }
 
 /// 这个函数 JS 侧可以继续进行调用，最终会返回一个 point 对象实例
-#[wasm_bindgen]
+#[wasm_bindgen(js_name = testPoint)]
 pub fn test_point() -> Point {
     let p: Point = Point::new(10, 10);
     let p1: Point = Point::new(6, 3);
     p.add(p1);
     p
+}
+
+/// 快速排序
+#[wasm_bindgen(js_name = quickSort)]
+pub fn quick_sort_js(arr: Array) -> Array {
+    let mut vec = js_array_to_vec(arr);
+    quick_sort(&mut vec);
+    vec_to_js_array(vec)
+}
+
+/// 斐波那契数列
+#[wasm_bindgen(js_name = fibRust)]
+pub fn fib_recursion(time: i16) -> i64 {
+    let mut result = 0;
+    let mut i = 1;
+    while i < time {
+        result = fib_rec(i);
+        i += 1;
+    }
+    result
 }
