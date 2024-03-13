@@ -1,0 +1,67 @@
+name: Build and Publish
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest # 运行环境
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v4 # 检出代码
+
+    - uses: pnpm/action-setup@v3
+      with:
+        version: 8 # 指定pnpm版本
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        registry-url: 'https://registry.npmjs.org'
+        cache: 'pnpm'
+
+    - name: Check Rust version
+      run: cargo --version
+
+    - name: Cache wasm-pack and pnpm dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cargo/bin/wasm-pack
+          ~/.cache/.wasm-pack
+          ~/.pnpm-store
+        key: |
+          ${{ runner.os }}-wasm-pack-${{ hashFiles('**/Cargo.lock') }}
+          ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-wasm-pack-
+          ${{ runner.os }}-pnpm-
+
+    - name: Install wasm-pack
+      # run: cargo install wasm-pack
+      run: |
+        command -v wasm-pack >/dev/null || curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+    - name: Install dependencies
+      run: pnpm install
+
+    - name: Run build script
+      run: pnpm build
+
+    # https://github.com/marketplace/actions/npm-publish
+    - uses: JS-DevTools/npm-publish@v3
+      with:
+        package: pkg/package.json
+        token: ${{ secrets.NPM_TOKEN }}
+    

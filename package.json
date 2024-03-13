@@ -1,6 +1,6 @@
 {
   "name": "wlin-rs-wasm",
-  "version": "0.2.0",
+  "version": "0.2.5",
   "description": "Write wasm in rust",
   "main": "js/index.js",
   "scripts": {
