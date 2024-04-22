@@ -3,7 +3,7 @@ categories = ["wasm"]
 description = "Write wasm in rust"
 edition = "2021"
 name = "wlin-rs-wasm"
-version = "0.2.5"
+version = "0.2.6"
 
 [lib]
 # 一个动态的系统库将会产生，类似于C共享库。当编译一个从其它语言加载调用的动态库时这属性将会被使用
