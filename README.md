@@ -23,4 +23,4 @@ console.log(result); // Output: 832040
 
 # Contributing
 
-Contributions are welcome! You can find this project on GitHub: RustWasmNpm.
+Contributions are welcome! You can find this project on GitHub: [wlin-rs-wasm](https://github.com/Richt20/rs-wasm).
