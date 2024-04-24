@@ -12,6 +12,7 @@ on:
       - main
     paths:
       - 'package.json'
+      - 'Cargo.toml'
     tags-ignore:
       - '**'
   pull_request:
@@ -19,6 +20,7 @@ on:
       - main
     paths:
       - 'package.json'
+      - 'Cargo.toml'
 
 env:
   CARGO_TERM_COLOR: always
