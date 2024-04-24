@@ -18,7 +18,7 @@ crate-type = ["cdylib"]
 # 提供了 JS 和 WASM 之间的通道，用来传递对象、字符串、数组这些数据类型
 wasm-bindgen = "0.2.92"
 # wee_alloc = {version = "0.4.5", optional = true}
-serde = { version = "1.0.197", features = ["derive"] }
+serde = { version = "1.0.198", features = ["derive"] }
 serde-wasm-bindgen = "0.6.5"
 
 # web-sys 可以和 JS 的 API 进行交互，比如 DOM
