@@ -19,8 +19,7 @@ pub fn hello_world() {
 #[wasm_bindgen]
 pub fn fib(n: i32) -> i32 {
     match n {
-        1 => 1,
-        2 => 1,
+        1 | 2 => 1,
         _ => fib(n - 1) + fib(n - 2),
     }
 }
