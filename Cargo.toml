@@ -28,7 +28,7 @@ version = "0.3.69"
 
 [dev-dependencies]
 # 用于所有JS环境 (如Node.js和浏览器)中的 JS 全局对象和函数的绑定
-js-sys = "0.3.69"
+js-sys = "0.3.70"
 
 # 0 – 不优化
 # 1 – 基础优化
