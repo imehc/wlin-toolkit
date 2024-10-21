@@ -34,7 +34,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4 # 检出代码
 
-    - uses: pnpm/action-setup@v3
+    - uses: pnpm/action-setup@v4
       with:
         version: 8 # 指定pnpm版本
 
@@ -73,8 +73,24 @@ jobs:
     - name: Run build script
       run: pnpm build
 
+    - name: Check if version has been updated
+      id: check
+      uses: EndBug/version-check@v2.1.5
+      with:
+        diff-search: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Log when changed
+      if: steps.check.outputs.changed == 'true'
+      run: 'echo "Version change found in commit ${{ steps.check.outputs.commit }}! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
+      
+    - name: Log when unchanged
+      if: steps.check.outputs.changed == 'false'
+      run: 'echo "No version change :/"'
+
     # https://github.com/marketplace/actions/npm-publish
     - uses: JS-DevTools/npm-publish@v3
+      if: steps.check.outputs.changed == 'true'
       with:
         package: pkg/package.json
         token: ${{ secrets.NPM_TOKEN }}
