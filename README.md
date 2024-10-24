@@ -1,5 +1,8 @@
 # wlin-rs-wasm
 
+[![Package Version](https://img.shields.io/npm/v/wlin-rs-wasm.svg)](https://www.npmjs.com/package/wlin-rs-wasm)
+[![Downloads](https://img.shields.io/npm/dm/wlin-rs-wasm.svg)](http://npm-stat.com/charts.html?package=wlin-rs-wasm&author=&from=&to=)
+
 wlin-rs-wasm is a npm package written in Rust and compiled to WebAssembly (Wasm).
 
 ## Installation
