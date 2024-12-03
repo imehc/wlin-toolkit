@@ -24,7 +24,7 @@ serde-wasm-bindgen = "0.6.5"
 # web-sys 可以和 JS 的 API 进行交互，比如 DOM
 [dependencies.web-sys]
 features = ["console"]
-version = "0.3.72"
+version = "0.3.74"
 
 [dev-dependencies]
 # 用于所有JS环境 (如Node.js和浏览器)中的 JS 全局对象和函数的绑定
