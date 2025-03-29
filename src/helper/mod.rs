@@ -1,5 +1,5 @@
 use wasm_bindgen::JsValue;
-use web_sys::js_sys::Array;
+use web_sys::js_sys::{Array, Object};
 
 /// 用于实现JS数组转Rust Vec类型
 pub fn js_array_to_vec(js_array: Array) -> Vec<f64> {
@@ -37,4 +37,40 @@ pub fn fib_rec(num: i16) -> i64 {
       return 1;
   }
   fib_rec(num - 1) + fib_rec(num - 2)
+}
+
+pub fn replace_undefined_with_null(value: JsValue) -> JsValue {
+    if value.is_undefined() {
+        return JsValue::NULL;
+    }
+
+    if value.is_null() || !value.is_object() {
+        return value;
+    }
+
+    if Array::is_array(&value) {
+        let array = Array::from(&value);
+        let new_array = Array::new();
+        for i in 0..array.length() {
+            let item = array.get(i);
+            let processed_item = replace_undefined_with_null(item);
+            new_array.push(&processed_item);
+        }
+        return new_array.into();
+    }
+
+    if let Some(obj) = Object::try_from(&value) {
+        let entries = Object::entries(&obj);
+        let new_obj = Object::new();
+        for i in 0..entries.length() {
+            let entry = Array::from(&entries.get(i));
+            let key = entry.get(0);
+            let val = entry.get(1);
+            let processed_val = replace_undefined_with_null(val);
+            web_sys::js_sys::Reflect::set(&new_obj, &key, &processed_val).unwrap();
+        }
+        return new_obj.into();
+    }
+
+    value
 }
