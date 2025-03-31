@@ -2,18 +2,13 @@ use helper::{fib_rec, js_array_to_vec, quick_sort, replace_undefined_with_null, 
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use wasm_bindgen::prelude::*;
-use web_sys::{console, js_sys::Array};
+use web_sys::js_sys::Array;
 
 mod helper;
 
 // #[cfg(feature = "wee_alloc")]
 // #[global_allocator]
 // static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
-
-#[wasm_bindgen(js_name = helloWorld)]
-pub fn hello_world() {
-    console::log_1(&JsValue::from_str("Hello World!"));
-}
 
 /// 斐波那契数列，时间复杂度 O(2^n)
 #[wasm_bindgen]

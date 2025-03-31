@@ -1,6 +1,5 @@
 async function main() {
-  const { helloWorld, fib, sendArrayToJs, sendObjToJs, testPoint, fibRust, quickSort, replaceUndefinedWithNull } = await import('../pkg/index');
-  helloWorld();
+  const { fib, sendArrayToJs, sendObjToJs, testPoint, fibRust, quickSort, replaceUndefinedWithNull } = await import('../pkg/index');
   console.log(fib(30));
   console.log(sendArrayToJs());
   console.log(sendObjToJs());
@@ -13,6 +12,21 @@ async function main() {
   const testArray = [1, undefined, 2, undefined, 3];
   const resultArray = replaceUndefinedWithNull(testArray);
   console.log('replaceUndefinedWithNull result:', resultArray);
+
+  // 测试混合数据
+  const testMixedArray = {
+    a: 1,
+    b: undefined,
+    c: [1, undefined, 3],
+    d: [],
+    e: true,
+    f: {},
+    g: { h: 'i' },
+    j: "2023-07-13T12:00:00.000Z",
+    k: null,
+  }
+  const resultMixedArray = replaceUndefinedWithNull(testMixedArray);
+  console.log('replaceUndefinedWithNull mixed result:', resultMixedArray);
 
   // 测试对象中带undefined
   const testObject = { a: 1, b: undefined, c: 3 };

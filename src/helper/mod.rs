@@ -50,20 +50,18 @@ pub fn replace_undefined_with_null(value: JsValue) -> JsValue {
 
     if Array::is_array(&value) {
         let array = Array::from(&value);
-        let new_array = Array::new();
-        for i in 0..array.length() {
-            let item = array.get(i);
-            let processed_item = replace_undefined_with_null(item);
-            new_array.push(&processed_item);
-        }
-        return new_array.into();
+        return array
+            .iter()
+            .map(|item| replace_undefined_with_null(item))
+            .collect::<Array>()
+            .into();
     }
 
     if let Some(obj) = Object::try_from(&value) {
-        let entries = Object::entries(&obj);
         let new_obj = Object::new();
-        for i in 0..entries.length() {
-            let entry = Array::from(&entries.get(i));
+        let entries = Object::entries(&obj);
+        for entry in entries.iter() {
+            let entry = Array::from(&entry);
             let key = entry.get(0);
             let val = entry.get(1);
             let processed_val = replace_undefined_with_null(val);
