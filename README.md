@@ -1,29 +1,42 @@
-# wlin-rs-wasm
+# wlin-toolkit
 
-[![Package Version](https://img.shields.io/npm/v/wlin-rs-wasm.svg)](https://www.npmjs.com/package/wlin-rs-wasm)
-[![Downloads](https://img.shields.io/npm/dm/wlin-rs-wasm.svg)](http://npm-stat.com/charts.html?package=wlin-rs-wasm&author=&from=&to=)
+[简体中文](README_zh.md) | English
 
-wlin-rs-wasm is a npm package written in Rust and compiled to WebAssembly (Wasm).
+[![Package Version](https://img.shields.io/npm/v/wlin-toolkit.svg)](https://www.npmjs.com/package/wlin-toolkit)
+[![Downloads](https://img.shields.io/npm/dm/wlin-toolkit.svg)](http://npm-stat.com/charts.html?package=wlin-toolkit&author=&from=&to=)
+
+wlin-toolkit is a npm package written in Rust and compiled to WebAssembly (Wasm). It provides high-performance data structure manipulation functions that seamlessly integrate with JavaScript/TypeScript applications.
 
 ## Installation
 
 You can install this package via npm:
 
 ```sh
-npm install wlin-rs-wasm
+npm install wlin-toolkit
 ```
 
 # Usage
 
 ``` typescript
-import { fib } from "wlin-rs-wasm";
+import { replaceUndefinedWithNull } from "wlin-toolkit";
 
-// Calling Rust function
-const result = fib(30);
-console.log(result); // Output: 832040
+// Replace undefined with null in different data structures
+const array = [1, undefined, 2, undefined, 3];
+console.log(replaceUndefinedWithNull(array)); // Output: [1, null, 2, null, 3]
 
+const object = { a: 1, b: undefined, c: 3 };
+console.log(replaceUndefinedWithNull(object)); // Output: { a: 1, b: null, c: 3 }
+
+const nestedData = {
+  a: 1,
+  b: undefined,
+  c: [1, undefined, 3],
+  d: { e: undefined, f: 2 }
+};
+console.log(replaceUndefinedWithNull(nestedData));
+// Output: { a: 1, b: null, c: [1, null, 3], d: { e: null, f: 2 } }
 ```
 
-# Contributing
+## License
 
-Contributions are welcome! You can find this project on GitHub: [wlin-rs-wasm](https://github.com/Richt20/rs-wasm).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

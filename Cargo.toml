@@ -2,7 +2,7 @@
 categories = ["wasm"]
 description = "Write wasm in rust"
 edition = "2021"
-name = "wlin-rs-wasm"
+name = "wlin-toolkit"
 version = "0.2.12"
 
 [lib]

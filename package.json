@@ -1,7 +1,7 @@
 {
-  "name": "wlin-rs-wasm",
+  "name": "wlin-toolkit",
   "version": "0.2.12",
-  "description": "Write wasm in rust",
+  "description": "A JavaScript toolkit for WebAssembly integration with Rust",
   "main": "js/index.js",
   "scripts": {
     "build": "rimraf dist pkg && webpack && npm run pre",

@@ -168,7 +168,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "wlin-rs-wasm"
+name = "wlin-toolkit"
 version = "0.2.12"
 dependencies = [
  "js-sys",
