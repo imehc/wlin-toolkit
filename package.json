@@ -1,6 +1,6 @@
 {
   "name": "wlin-toolkit",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "description": "A JavaScript toolkit for WebAssembly integration with Rust",
   "main": "js/index.js",
   "scripts": {

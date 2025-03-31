@@ -169,7 +169,7 @@ dependencies = [
 
 [[package]]
 name = "wlin-toolkit"
-version = "0.2.12"
+version = "0.2.13"
 dependencies = [
  "js-sys",
  "serde",
