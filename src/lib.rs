@@ -1,19 +1,14 @@
-use helper::{fib_rec, js_array_to_vec, quick_sort, vec_to_js_array};
+use helper::{fib_rec, js_array_to_vec, quick_sort, replace_undefined_with_null, vec_to_js_array};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use wasm_bindgen::prelude::*;
-use web_sys::{console, js_sys::Array};
+use web_sys::js_sys::Array;
 
 mod helper;
 
 // #[cfg(feature = "wee_alloc")]
 // #[global_allocator]
 // static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
-
-#[wasm_bindgen(js_name = helloWorld)]
-pub fn hello_world() {
-    console::log_1(&JsValue::from_str("Hello World!"));
-}
 
 /// 斐波那契数列，时间复杂度 O(2^n)
 #[wasm_bindgen]
@@ -113,4 +108,26 @@ pub fn fib_recursion(time: i16) -> i64 {
         i += 1;
     }
     result
+}
+
+#[test]
+fn test_fib_recursion() {
+    // 测试边界条件
+    assert_eq!(fib_recursion(0), 0);
+    assert_eq!(fib_recursion(1), 0);
+
+    // 测试正常输入
+    assert_eq!(fib_recursion(2), 1);
+    assert_eq!(fib_recursion(3), 2);
+    assert_eq!(fib_recursion(4), 3);
+    assert_eq!(fib_recursion(5), 5);
+
+    // 测试较大输入
+    assert_eq!(fib_recursion(10), 55);
+}
+
+/// 将 JS 中的 undefined 替换为 null
+#[wasm_bindgen(js_name = replaceUndefinedWithNull)]
+pub fn replace_undefined_with_null_js(value: JsValue) -> JsValue {
+    replace_undefined_with_null(value)
 }
