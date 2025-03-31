@@ -1,7 +1,5 @@
 # wlin-toolkit
 
-[简体中文](README_zh.md) | English
-
 [![Package Version](https://img.shields.io/npm/v/wlin-toolkit.svg)](https://www.npmjs.com/package/wlin-toolkit)
 [![Downloads](https://img.shields.io/npm/dm/wlin-toolkit.svg)](http://npm-stat.com/charts.html?package=wlin-toolkit&author=&from=&to=)
 
