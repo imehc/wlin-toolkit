@@ -17,6 +17,8 @@ npm install wlin-toolkit
 
 ## 使用
 
+### 将 undefined 替换为 null
+
 ```typescript
 import { replaceUndefinedWithNull } from "wlin-toolkit";
 
@@ -35,6 +37,21 @@ const nestedData = {
 };
 console.log(replaceUndefinedWithNull(nestedData));
 // 输出: { a: 1, b: null, c: [1, null, 3], d: { e: null, f: 2 } }
+```
+
+### 将数字转换为中文大写格式
+
+```typescript
+import { digitUppercase } from "wlin-toolkit";
+
+// 将数字转换为中文大写金额格式
+console.log(digitUppercase(123.45)); // 输出: "壹佰贰拾叁元肆角伍分"
+console.log(digitUppercase(0));      // 输出: "零元整"
+console.log(digitUppercase(100));    // 输出: "壹佰元整"
+console.log(digitUppercase(10011));  // 输出: "壹万零壹拾壹元整"
+console.log(digitUppercase(1002222206.23));  // 输出: "壹拾亿零贰佰贰拾贰万贰仟贰佰零陆元贰角叁分"
+
+// 负数和无效输入将抛出错误
 ```
 
 ## 开源协议

@@ -13,7 +13,9 @@ You can install this package via npm:
 npm install wlin-toolkit
 ```
 
-# Usage
+## Usage
+
+### Replace undefined with null
 
 ``` typescript
 import { replaceUndefinedWithNull } from "wlin-toolkit";
@@ -33,6 +35,21 @@ const nestedData = {
 };
 console.log(replaceUndefinedWithNull(nestedData));
 // Output: { a: 1, b: null, c: [1, null, 3], d: { e: null, f: 2 } }
+```
+
+### Convert numbers to Chinese uppercase format
+
+``` typescript
+import { digitUppercase } from "wlin-toolkit";
+
+// Convert numbers to Chinese uppercase monetary format
+console.log(digitUppercase(123.45)); // Output: "壹佰贰拾叁元肆角伍分"
+console.log(digitUppercase(0));      // Output: "零元整"
+console.log(digitUppercase(100));    // Output: "壹佰元整"
+console.log(digitUppercase(10011));  // Output: "壹万零壹拾壹元整"
+console.log(digitUppercase(1002222206.23));  // Output: "壹拾亿零贰佰贰拾贰万贰仟贰佰零陆元贰角叁分"
+
+// Negative numbers and invalid inputs will throw an error
 ```
 
 ## License
