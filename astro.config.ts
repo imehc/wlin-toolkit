@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config'
-import node from '@astrojs/node'
 import { fileURLToPath } from 'url'
 import { dirname, resolve } from 'path'
 import wasm from "vite-plugin-wasm";
@@ -15,9 +14,6 @@ export default defineConfig({
   publicDir: './ui/public',
   outDir: './dist',
   integrations: [],
-  adapter: node({
-    mode: 'standalone'
-  }),
   vite: {
     plugins: [wasm(), topLevelAwait(), tailwindcss()],
     server: {
