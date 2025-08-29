@@ -175,8 +175,8 @@ import ApiDemo from "~/layouts/ApiDemo.astro";
 							return;
 						}
 
-						// 使用 eval 解析包含 undefined 的 JavaScript 对象
-						const testData = eval(`(${inputText})`);
+						// 安全解析包含 undefined 的 JavaScript 对象
+						const testData = Function(`"use strict"; return (${inputText})`)();
 						const result = replaceUndefinedWithNull(testData);
 
 						const endTime = performance.now();

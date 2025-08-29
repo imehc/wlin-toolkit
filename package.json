@@ -5,7 +5,7 @@
   "main": "pkg/wlin_toolkit.js",
   "scripts": {
     "build:npm": "rimraf pkg && wasm-pack build && npm run pre",
-    "build:ui": "wasm-pack build && astro build",
+    "build:ui": "wasm-pack build --target bundler && astro build",
     "build": "npm run build:npm",
     "dev": "wasm-pack build && astro dev",
     "preview": "astro preview",
