@@ -1,0 +1,86 @@
+---
+import Layout from "~/layouts/Layout.astro";
+
+interface Props {
+	title: string;
+	apiName: string;
+	description: string;
+	color: "blue" | "green" | "purple" | "red";
+	icon: string;
+}
+
+const { title, apiName, description, color, icon } = Astro.props;
+
+const colorClasses = {
+	blue: {
+		gradient: "from-blue-500 to-blue-600",
+		button: "bg-blue-600 hover:bg-blue-700 focus:ring-blue-500",
+		text: "text-blue-100"
+	},
+	green: {
+		gradient: "from-green-500 to-green-600", 
+		button: "bg-green-600 hover:bg-green-700 focus:ring-green-500",
+		text: "text-green-100"
+	},
+	purple: {
+		gradient: "from-purple-500 to-purple-600",
+		button: "bg-purple-600 hover:bg-purple-700 focus:ring-purple-500", 
+		text: "text-purple-100"
+	},
+	red: {
+		gradient: "from-red-500 to-red-600",
+		button: "bg-red-600 hover:bg-red-700 focus:ring-red-500",
+		text: "text-red-100"
+	}
+};
+---
+
+<Layout title={title}>
+	<div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+		<!-- Compact Header -->
+		<header class={`bg-gradient-to-r ${colorClasses[color].gradient} text-white h-14`}>
+			<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+				<div class="flex items-center justify-between h-full">
+					<a href="/" class="inline-flex items-center text-white/80 hover:text-white transition-colors text-sm">
+						<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+						</svg>
+						返回
+					</a>
+					<div class="text-center flex-1">
+						<div class="flex items-center justify-center">
+							<span class="text-lg mr-2">{icon}</span>
+							<h1 class="text-lg sm:text-xl font-medium">{apiName}</h1>
+						</div>
+					</div>
+					<div class="w-12 sm:w-16"></div> <!-- Spacer for centering -->
+				</div>
+			</div>
+		</header>
+
+		<!-- Main Content -->
+		<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+			<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+				<slot />
+			</div>
+
+			<!-- Compact Tech Info -->
+			<div class="mt-6 bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+				<div class="flex items-center justify-center space-x-6 text-xs text-gray-500">
+					<div class="flex items-center">
+						<span class="text-orange-500 mr-1">🦀</span>
+						<span>Rust</span>
+					</div>
+					<div class="flex items-center">
+						<span class="text-blue-500 mr-1">⚡</span>
+						<span>WebAssembly</span>
+					</div>
+					<div class="flex items-center">
+						<span class="text-green-500 mr-1">🚀</span>
+						<span>高性能</span>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</Layout>

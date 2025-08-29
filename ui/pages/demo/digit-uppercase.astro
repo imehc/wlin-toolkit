@@ -1,0 +1,262 @@
+---
+import ApiDemo from "~/layouts/ApiDemo.astro";
+---
+
+<ApiDemo 
+	title="数字转大写 - WASM Toolkit"
+	apiName="数字转大写"
+	description="将阿拉伯数字转换为中文大写格式"
+	color="green"
+	icon="🔤"
+>
+	<div class="p-4 sm:p-6">
+		<!-- API Description -->
+		<div class="mb-6 text-center">
+			<p class="text-gray-600">将阿拉伯数字转换为中文大写格式</p>
+		</div>
+		
+		<div class="grid lg:grid-cols-2 gap-6">
+			<!-- 输入区域 -->
+			<div>
+				<h3 class="text-lg font-medium text-gray-900 mb-3">数字输入</h3>
+				<div class="space-y-3">
+					<input 
+						type="number" 
+						id="digit-input" 
+						class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-lg"
+						placeholder="例如: 123.45"
+						value="123.45"
+						step="any"
+					>
+					
+					<button 
+						id="convert-btn"
+						class="w-full bg-green-600 text-white py-2.5 px-4 rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium"
+					>
+						🔤 转换为大写
+					</button>
+				</div>
+
+				<!-- 预设示例 -->
+				<div class="mt-4">
+					<h4 class="text-sm font-medium text-gray-700 mb-2">常用示例</h4>
+					<div class="grid grid-cols-3 gap-1.5">
+						<button class="example-digit px-2 py-2 bg-green-50 hover:bg-green-100 rounded text-xs transition-colors border border-green-200" data-value="0">
+							<div class="font-medium text-green-800">0</div>
+						</button>
+						<button class="example-digit px-2 py-2 bg-green-50 hover:bg-green-100 rounded text-xs transition-colors border border-green-200" data-value="100">
+							<div class="font-medium text-green-800">100</div>
+						</button>
+						<button class="example-digit px-2 py-2 bg-green-50 hover:bg-green-100 rounded text-xs transition-colors border border-green-200" data-value="1000">
+							<div class="font-medium text-green-800">1,000</div>
+						</button>
+						<button class="example-digit px-2 py-2 bg-green-50 hover:bg-green-100 rounded text-xs transition-colors border border-green-200" data-value="10000">
+							<div class="font-medium text-green-800">10,000</div>
+						</button>
+						<button class="example-digit px-2 py-2 bg-green-50 hover:bg-green-100 rounded text-xs transition-colors border border-green-200" data-value="123.45">
+							<div class="font-medium text-green-800">123.45</div>
+						</button>
+						<button class="example-digit px-2 py-2 bg-green-50 hover:bg-green-100 rounded text-xs transition-colors border border-green-200" data-value="999999">
+							<div class="font-medium text-green-800">999,999</div>
+						</button>
+					</div>
+				</div>
+
+				<!-- 随机数生成 -->
+				<div class="mt-4">
+					<h4 class="text-sm font-medium text-gray-700 mb-2">随机测试</h4>
+					<div class="grid grid-cols-3 gap-1.5">
+						<button id="random-int" class="px-2 py-2 bg-gray-100 hover:bg-gray-200 rounded text-xs transition-colors">
+							随机整数
+						</button>
+						<button id="random-decimal" class="px-2 py-2 bg-gray-100 hover:bg-gray-200 rounded text-xs transition-colors">
+							随机小数
+						</button>
+						<button id="random-large" class="px-2 py-2 bg-gray-100 hover:bg-gray-200 rounded text-xs transition-colors">
+							随机大数
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- 输出区域 -->
+			<div>
+				<h3 class="text-lg font-medium text-gray-900 mb-3">转换结果</h3>
+				<div class="bg-gray-50 border border-gray-200 rounded-lg p-4 min-h-[150px] flex items-center justify-center">
+					<div id="digit-output" class="text-center">
+						<div class="text-2xl font-bold text-green-800 mb-2" id="result-text">
+							壹佰贰拾叁点肆伍
+						</div>
+						<div class="text-gray-500 text-sm">中文大写数字</div>
+					</div>
+				</div>
+
+				<!-- 性能和统计 -->
+				<div class="mt-3 grid grid-cols-2 gap-3">
+					<div class="p-2.5 bg-green-50 rounded-lg">
+						<div class="flex items-center justify-between text-sm">
+							<span class="text-green-800">处理时间</span>
+							<span id="convert-time" class="text-green-600 font-mono">0.23 ms</span>
+						</div>
+					</div>
+					<div class="p-2.5 bg-blue-50 rounded-lg">
+						<div class="flex items-center justify-between text-sm">
+							<span class="text-blue-800">字符长度</span>
+							<span id="char-count" class="text-blue-600 font-mono">9</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- 历史记录 -->
+				<div class="mt-4">
+					<h4 class="text-sm font-medium text-gray-700 mb-2">转换历史</h4>
+					<div id="history" class="space-y-1.5 max-h-32 overflow-y-auto">
+						<!-- 历史记录将动态添加到这里 -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 简化说明 -->
+		<div class="mt-8 pt-6 border-t border-gray-200">
+			<div class="grid sm:grid-cols-2 gap-6 text-sm">
+				<div>
+					<h4 class="font-medium text-gray-900 mb-2">✨ 转换规则</h4>
+					<ul class="space-y-1 text-gray-600">
+						<li>• 零、壹、贰、叁、肆、伍、陆、柒、捌、玖</li>
+						<li>• 拾、佰、仟、万、亿等单位处理</li>
+						<li>• 小数点后逐位转换</li>
+					</ul>
+				</div>
+				
+				<div>
+					<h4 class="font-medium text-gray-900 mb-2">🎯 应用场景</h4>
+					<ul class="space-y-1 text-gray-600">
+						<li>• 财务报表金额显示</li>
+						<li>• 支票汇票金额书写</li>
+						<li>• 合同法律文件表述</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		async function initDigitUppercase() {
+			try {
+				const wasm = await import("#/wlin_toolkit");
+				const { digitUppercase } = wasm;
+
+				const input = document.getElementById("digit-input") as HTMLInputElement;
+				const output = document.getElementById("result-text") as HTMLElement;
+				const convertTime = document.getElementById("convert-time") as HTMLElement;
+				const charCount = document.getElementById("char-count") as HTMLElement;
+				const convertBtn = document.getElementById("convert-btn") as HTMLButtonElement;
+				const history = document.getElementById("history") as HTMLDivElement;
+				
+				const exampleBtns = document.querySelectorAll(".example-digit") as NodeListOf<HTMLButtonElement>;
+				const randomBtns = {
+					int: document.getElementById("random-int"),
+					decimal: document.getElementById("random-decimal"),
+					large: document.getElementById("random-large")
+				};
+
+				let historyList: {
+					number: number;
+					result: string;
+					time: string;
+					timestamp: Date;
+				}[] = [];
+
+				function addToHistory(number: number, result: string, time: string) {
+					historyList.unshift({ number, result, time, timestamp: new Date() });
+					if (historyList.length > 5) historyList.pop();
+					
+					history.innerHTML = historyList.map(item => 
+						`<div class="flex justify-between items-center p-2 bg-white rounded border text-xs">
+							<span class="font-mono">${item.number}</span>
+							<span class="text-gray-500 truncate ml-2">${item.result.length > 15 ? item.result.substring(0, 15) + '...' : item.result}</span>
+						</div>`
+					).join('');
+				}
+
+				function convertNumber() {
+					const startTime = performance.now();
+					
+					try {
+						const number = parseFloat(input.value);
+						if (isNaN(number)) {
+							output.textContent = '请输入有效的数字';
+							output.className = 'text-2xl font-bold text-red-600 mb-2';
+							return;
+						}
+
+						const result = digitUppercase(number);
+						const endTime = performance.now();
+						const processingTime = (endTime - startTime).toFixed(2);
+						
+						output.textContent = result;
+						output.className = 'text-2xl font-bold text-green-800 mb-2';
+						convertTime.textContent = `${processingTime} ms`;
+						charCount.textContent = result.length.toString();
+
+						addToHistory(number, result, processingTime);
+						
+					} catch (error) {
+						output.textContent = `错误: ${(error as Error).message}`;
+						output.className = 'text-lg font-bold text-red-600 mb-2';
+						convertTime.textContent = 'Error';
+						charCount.textContent = '0';
+					}
+				}
+
+				// 初始转换
+				convertNumber();
+
+				convertBtn.addEventListener('click', convertNumber);
+
+				// 预设示例
+				exampleBtns.forEach(btn => {
+					btn.addEventListener('click', () => {
+						input.value = btn.dataset.value as string;
+						convertNumber();
+					});
+				});
+
+				// 随机数生成
+				randomBtns.int?.addEventListener('click', () => {
+					input.value = Math.floor(Math.random() * 100000).toString();
+					convertNumber();
+				});
+
+				randomBtns.decimal?.addEventListener('click', () => {
+					input.value = (Math.random() * 1000).toFixed(2);
+					convertNumber();
+				});
+
+				randomBtns.large?.addEventListener('click', () => {
+					input.value = Math.floor(Math.random() * 999999999).toString();
+					convertNumber();
+				});
+
+				// 实时转换
+				input.addEventListener('input', convertNumber);
+
+				// 回车键支持
+				input.addEventListener('keypress', (e) => {
+					if (e.key === 'Enter') {
+						convertNumber();
+					}
+				});
+
+			} catch (error) {
+				document.getElementById("result-text")!.textContent = 
+					`WASM 模块加载失败: ${(error as Error).message}`;
+				document.getElementById("result-text")!.className = 
+					'text-lg font-bold text-red-600 mb-2';
+			}
+		}
+
+		initDigitUppercase();
+	</script>
+</ApiDemo>

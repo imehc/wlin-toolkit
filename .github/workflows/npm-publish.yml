@@ -29,14 +29,14 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [20.x]
 
     steps:
-    - uses: actions/checkout@v4 # 检出代码
+    - uses: actions/checkout@v5 # 检出代码
 
     - uses: pnpm/action-setup@v4
       with:
-        version: 8 # 指定pnpm版本
+        version: 10 # 指定pnpm版本
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
@@ -75,7 +75,7 @@ jobs:
 
     - name: Check if version has been updated
       id: check
-      uses: EndBug/version-check@v2.1.5
+      uses: EndBug/version-check@v2.1.7
       with:
         diff-search: true
         token: ${{ secrets.GITHUB_TOKEN }}

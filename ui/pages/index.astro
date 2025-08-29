@@ -1,0 +1,203 @@
+---
+import Layout from "~/layouts/Layout.astro";
+---
+
+<Layout title="WASM Toolkit - API Demo">
+	<div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+		<!-- Header -->
+		<header class="bg-white shadow-sm border-b border-gray-200 h-14">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+				<div class="flex items-center justify-center h-full">
+					<h1 class="text-2xl sm:text-3xl font-bold text-gray-900">
+						🦀 WASM Toolkit
+					</h1>
+				</div>
+			</div>
+		</header>
+
+		<!-- API Cards -->
+		<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+			<!-- Brief intro -->
+			<div class="text-center mb-8">
+				<p class="text-lg text-gray-600 max-w-2xl mx-auto mb-4">
+					使用 Rust 和 WebAssembly 构建的高性能工具包
+				</p>
+				<div class="flex justify-center items-center space-x-6 text-sm text-gray-500">
+					<div class="flex items-center">
+						<span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+						2 个可用 API
+					</div>
+					<div class="flex items-center">
+						<span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+						零依赖
+					</div>
+					<div class="flex items-center">
+						<span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+						高性能
+					</div>
+				</div>
+			</div>
+			
+			<div class="grid gap-8 md:grid-cols-2">
+				<!-- Replace Undefined API -->
+				<a href="/demo/replace-undefined" class="group block">
+					<div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
+						<div class="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-6">
+							<div class="flex items-center justify-between">
+								<div>
+									<div class="flex items-center mb-2">
+										<svg class="w-8 h-8 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
+										</svg>
+										<h2 class="text-2xl font-bold text-white">Replace Undefined</h2>
+									</div>
+									<p class="text-blue-100">
+										将 JavaScript 对象中的 undefined 值替换为 null
+									</p>
+								</div>
+								<div class="text-4xl opacity-50">🔄</div>
+							</div>
+						</div>
+						
+						<div class="p-6">
+							<div class="space-y-3">
+								<div class="flex items-center text-sm text-gray-600">
+									<svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+									</svg>
+									深度遍历对象和数组
+								</div>
+								<div class="flex items-center text-sm text-gray-600">
+									<svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+									</svg>
+									保持原始数据结构
+								</div>
+								<div class="flex items-center text-sm text-gray-600">
+									<svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+									</svg>
+									JSON 序列化友好
+								</div>
+							</div>
+							
+							<div class="mt-6 flex items-center justify-between">
+								<div class="flex items-center text-sm text-gray-500">
+									<span class="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+									数据处理工具
+								</div>
+								<div class="flex items-center text-blue-600 text-sm font-medium group-hover:text-blue-700">
+									立即体验
+									<svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+				</a>
+
+				<!-- Digit Uppercase API -->
+				<a href="/demo/digit-uppercase" class="group block">
+					<div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
+						<div class="bg-gradient-to-r from-green-500 to-green-600 px-6 py-6">
+							<div class="flex items-center justify-between">
+								<div>
+									<div class="flex items-center mb-2">
+										<svg class="w-8 h-8 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+										</svg>
+										<h2 class="text-2xl font-bold text-white">数字转大写</h2>
+									</div>
+									<p class="text-green-100">
+										将阿拉伯数字转换为中文大写格式
+									</p>
+								</div>
+								<div class="text-4xl opacity-50">🔤</div>
+							</div>
+						</div>
+						
+						<div class="p-6">
+							<div class="space-y-3">
+								<div class="flex items-center text-sm text-gray-600">
+									<svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+									</svg>
+									支持小数和整数
+								</div>
+								<div class="flex items-center text-sm text-gray-600">
+									<svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+									</svg>
+									标准中文大写格式
+								</div>
+								<div class="flex items-center text-sm text-gray-600">
+									<svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+									</svg>
+									财务和正式文档适用
+								</div>
+							</div>
+							
+							<div class="mt-6 flex items-center justify-between">
+								<div class="flex items-center text-sm text-gray-500">
+									<span class="inline-block w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+									文本转换工具
+								</div>
+								<div class="flex items-center text-green-600 text-sm font-medium group-hover:text-green-700">
+									立即体验
+									<svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<!-- Features Section -->
+			<div class="mt-16 bg-white rounded-xl shadow-lg border border-gray-100 p-8">
+				<div class="text-center mb-8">
+					<h3 class="text-2xl font-bold text-gray-900 mb-3">
+						为什么选择 WASM Toolkit？
+					</h3>
+					<p class="text-gray-600 max-w-2xl mx-auto">
+						基于 Rust 的 WebAssembly 实现，为现代 Web 应用提供高性能的数据处理能力
+					</p>
+				</div>
+				
+				<div class="grid md:grid-cols-4 gap-6">
+					<div class="text-center">
+						<div class="bg-orange-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
+							<span class="text-2xl">⚡</span>
+						</div>
+						<h4 class="font-semibold text-gray-900 mb-2">高性能</h4>
+						<p class="text-sm text-gray-600">WebAssembly 提供接近原生的执行速度</p>
+					</div>
+					<div class="text-center">
+						<div class="bg-blue-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
+							<span class="text-2xl">🔒</span>
+						</div>
+						<h4 class="font-semibold text-gray-900 mb-2">类型安全</h4>
+						<p class="text-sm text-gray-600">Rust 类型系统确保运行时安全</p>
+					</div>
+					<div class="text-center">
+						<div class="bg-green-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
+							<span class="text-2xl">📦</span>
+						</div>
+						<h4 class="font-semibold text-gray-900 mb-2">零依赖</h4>
+						<p class="text-sm text-gray-600">无需额外依赖，开箱即用</p>
+					</div>
+					<div class="text-center">
+						<div class="bg-purple-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
+							<span class="text-2xl">🌐</span>
+						</div>
+						<h4 class="font-semibold text-gray-900 mb-2">跨平台</h4>
+						<p class="text-sm text-gray-600">在任何现代浏览器中运行</p>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</Layout>

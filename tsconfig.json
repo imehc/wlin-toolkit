@@ -1,0 +1,24 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "verbatimModuleSyntax": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./ui/*"],
+      "#/*": ["./pkg/*"]
+    }
+  },
+  "include": ["ui/**/*", ".astro/types.d.ts", "astro.config.ts"],
+  "exclude": ["node_modules", "dist", "pkg", "target"]
+}
