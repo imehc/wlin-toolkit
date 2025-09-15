@@ -89,7 +89,7 @@ jobs:
       run: 'echo "No version change :/"'
 
     # https://github.com/marketplace/actions/npm-publish
-    - uses: JS-DevTools/npm-publish@v3
+    - uses: JS-DevTools/npm-publish@v4
       if: steps.check.outputs.changed == 'true'
       with:
         package: pkg/package.json
