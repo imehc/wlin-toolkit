@@ -13,7 +13,7 @@
     "pre": "sh prepublish.sh"
   },
   "devDependencies": {
-    "@astrojs/node": "^9.4.3",
+    "@astrojs/node": "^9.4.4",
     "@types/node": "^24.5.2",
     "astro": "^5.13.9",
     "rimraf": "^6.0.1",
