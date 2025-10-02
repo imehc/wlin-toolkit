@@ -10,20 +10,20 @@ importers:
     dependencies:
       '@tailwindcss/vite':
         specifier: ^4.1.14
-        version: 4.1.14(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1))
+        version: 4.1.14(vite@6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1))
       tailwindcss:
         specifier: ^4.1.13
         version: 4.1.13
     devDependencies:
       '@astrojs/node':
         specifier: ^9.4.4
-        version: 9.4.4(astro@5.14.1(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.2)(typescript@5.9.2))
+        version: 9.4.4(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.2)(typescript@5.9.2))
       '@types/node':
-        specifier: ^24.6.0
-        version: 24.6.0
+        specifier: ^24.6.2
+        version: 24.6.2
       astro:
         specifier: ^5.14.1
-        version: 5.14.1(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.2)(typescript@5.9.2)
+        version: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.2)(typescript@5.9.2)
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
@@ -32,10 +32,10 @@ importers:
         version: 5.9.2
       vite-plugin-top-level-await:
         specifier: ^1.6.0
-        version: 1.6.0(@swc/helpers@0.5.17)(rollup@4.52.2)(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1))
+        version: 1.6.0(@swc/helpers@0.5.17)(rollup@4.52.2)(vite@6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1))
       vite-plugin-wasm:
         specifier: ^3.5.0
-        version: 3.5.0(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1))
+        version: 3.5.0(vite@6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1))
 
 packages:
 
@@ -738,8 +738,8 @@ packages:
   '@types/nlcst@2.0.3':
     resolution: {integrity: sha512-vSYNSDe6Ix3q+6Z7ri9lyWqgGhJTmzRjZRqyq15N0Z/1/UnVsno9G/N40NBijoYx2seFDIl0+B2mgAb9mezUCA==}
 
-  '@types/node@24.6.0':
-    resolution: {integrity: sha512-F1CBxgqwOMc4GKJ7eY22hWhBVQuMYTtqI8L0FcszYcpYX0fzfDGpez22Xau8Mgm7O9fI+zA/TYIdq3tGWfweBA==}
+  '@types/node@24.6.2':
+    resolution: {integrity: sha512-d2L25Y4j+W3ZlNAeMKcy7yDsK425ibcAOO2t7aPTz6gNMH0z2GThtwENCDc0d/Pw9wgyRqE5Px1wkV7naz8ang==}
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
@@ -2012,10 +2012,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@9.4.4(astro@5.14.1(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.2)(typescript@5.9.2))':
+  '@astrojs/node@9.4.4(astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.2)(typescript@5.9.2))':
     dependencies:
       '@astrojs/internal-helpers': 0.7.3
-      astro: 5.14.1(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.2)(typescript@5.9.2)
+      astro: 5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.2)(typescript@5.9.2)
       send: 1.2.0
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -2501,12 +2501,12 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.1.14
       '@tailwindcss/oxide-win32-x64-msvc': 4.1.14
 
-  '@tailwindcss/vite@4.1.14(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1))':
+  '@tailwindcss/vite@4.1.14(vite@6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1))':
     dependencies:
       '@tailwindcss/node': 4.1.14
       '@tailwindcss/oxide': 4.1.14
       tailwindcss: 4.1.14
-      vite: 6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1)
+      vite: 6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)
 
   '@types/debug@4.1.12':
     dependencies:
@@ -2516,7 +2516,7 @@ snapshots:
 
   '@types/fontkit@2.0.8':
     dependencies:
-      '@types/node': 24.6.0
+      '@types/node': 24.6.2
 
   '@types/hast@3.0.4':
     dependencies:
@@ -2532,7 +2532,7 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
 
-  '@types/node@24.6.0':
+  '@types/node@24.6.2':
     dependencies:
       undici-types: 7.13.0
 
@@ -2567,7 +2567,7 @@ snapshots:
 
   array-iterate@2.0.1: {}
 
-  astro@5.14.1(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.2)(typescript@5.9.2):
+  astro@5.14.1(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)(rollup@4.52.2)(typescript@5.9.2):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.3
@@ -2623,8 +2623,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.17.1
       vfile: 6.0.3
-      vite: 6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1)
-      vitefu: 1.1.1(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1))
+      vite: 6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)
+      vitefu: 1.1.1(vite@6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.3
@@ -3961,22 +3961,22 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite-plugin-top-level-await@1.6.0(@swc/helpers@0.5.17)(rollup@4.52.2)(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1)):
+  vite-plugin-top-level-await@1.6.0(@swc/helpers@0.5.17)(rollup@4.52.2)(vite@6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)):
     dependencies:
       '@rollup/plugin-virtual': 3.0.2(rollup@4.52.2)
       '@swc/core': 1.13.5(@swc/helpers@0.5.17)
       '@swc/wasm': 1.13.5
       uuid: 10.0.0
-      vite: 6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1)
+      vite: 6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)
     transitivePeerDependencies:
       - '@swc/helpers'
       - rollup
 
-  vite-plugin-wasm@3.5.0(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1)):
+  vite-plugin-wasm@3.5.0(vite@6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)):
     dependencies:
-      vite: 6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1)
+      vite: 6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)
 
-  vite@6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1):
+  vite@6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1):
     dependencies:
       esbuild: 0.25.10
       fdir: 6.5.0(picomatch@4.0.3)
@@ -3985,14 +3985,14 @@ snapshots:
       rollup: 4.52.2
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 24.6.0
+      '@types/node': 24.6.2
       fsevents: 2.3.3
       jiti: 2.6.1
       lightningcss: 1.30.1
 
-  vitefu@1.1.1(vite@6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1)):
+  vitefu@1.1.1(vite@6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)):
     optionalDependencies:
-      vite: 6.3.6(@types/node@24.6.0)(jiti@2.6.1)(lightningcss@1.30.1)
+      vite: 6.3.6(@types/node@24.6.2)(jiti@2.6.1)(lightningcss@1.30.1)
 
   web-namespaces@2.0.1: {}
 
