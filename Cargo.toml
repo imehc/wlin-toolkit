@@ -1,0 +1,24 @@
+[package]
+name = "wlin-upnp"
+version = "0.3.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/imehc/wlin-toolkit"
+description = "UPnP Control Point implementation in Rust"
+keywords = ["upnp", "ssdp", "soap", "networking", "iot"]
+categories = ["network-programming"]
+
+[lib]
+crate-type = ["rlib"]
+
+[dependencies]
+# UPnP 核心依赖
+tokio = { version = "1.42", features = ["full"] }
+reqwest = { version = "0.12", features = ["blocking"] }
+quick-xml = { version = "0.37", features = ["serialize"] }
+url = "2.5"
+serde = { version = "1.0.228", features = ["derive"] }
+
+[[example]]
+name = "upnp_native"
+path = "examples/upnp_native.rs"
