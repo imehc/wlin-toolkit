@@ -1,14 +1,16 @@
 pub mod ssdp;
 pub mod http_client;
 pub mod soap;
+pub mod gena;
 
 use std::collections::HashMap;
 use std::time::Duration;
 use serde::{Deserialize, Serialize};
 
-pub use ssdp::{SsdpClient, SsdpDevice};
+pub use ssdp::{SsdpClient, SsdpDevice, SsdpNotification, SsdpNotificationListener};
 pub use http_client::{HttpClient, DeviceDescription, Device, Service};
 pub use soap::SoapClient;
+pub use gena::{GenaClient, Subscription};
 
 /// UPnP 控制点
 #[derive(Clone)]
@@ -16,6 +18,7 @@ pub struct UpnpControlPoint {
     ssdp_client: SsdpClient,
     http_client: HttpClient,
     soap_client: SoapClient,
+    gena_client: GenaClient,
 }
 
 impl UpnpControlPoint {
@@ -25,6 +28,17 @@ impl UpnpControlPoint {
             ssdp_client: SsdpClient::new()?,
             http_client: HttpClient::new(),
             soap_client: SoapClient::new(),
+            gena_client: GenaClient::default(),
+        })
+    }
+
+    /// 创建带自定义回调端口的 UPnP 控制点
+    pub fn with_callback_port(port: u16) -> Result<Self, Box<dyn std::error::Error>> {
+        Ok(Self {
+            ssdp_client: SsdpClient::new()?,
+            http_client: HttpClient::new(),
+            soap_client: SoapClient::new(),
+            gena_client: GenaClient::new(port),
         })
     }
 
@@ -68,6 +82,47 @@ impl UpnpControlPoint {
     /// 解析 SOAP 响应
     pub fn parse_soap_response(&self, xml: &str) -> Result<HashMap<String, String>, Box<dyn std::error::Error>> {
         self.soap_client.parse_response(xml)
+    }
+
+    /// 监听设备通知（上线/下线）
+    ///
+    /// 返回一个监听器，可以接收设备的上线、下线通知
+    pub fn listen_notifications(&self) -> Result<SsdpNotificationListener, Box<dyn std::error::Error>> {
+        self.ssdp_client.listen_notifications()
+    }
+
+    /// 订阅服务事件
+    ///
+    /// # 参数
+    /// - `event_sub_url`: 服务的事件订阅 URL
+    /// - `callback_urls`: 回调 URL 列表（本机 IP 地址）
+    /// - `timeout`: 订阅超时时间（秒），0 表示无限
+    pub fn subscribe_events(
+        &self,
+        event_sub_url: &str,
+        callback_urls: &[String],
+        timeout: u32,
+    ) -> Result<Subscription, Box<dyn std::error::Error>> {
+        self.gena_client.subscribe(event_sub_url, callback_urls, timeout)
+    }
+
+    /// 续订事件
+    pub fn renew_subscription(
+        &self,
+        subscription: &Subscription,
+        timeout: u32,
+    ) -> Result<Subscription, Box<dyn std::error::Error>> {
+        self.gena_client.renew(subscription, timeout)
+    }
+
+    /// 取消订阅
+    pub fn unsubscribe(&self, subscription: &Subscription) -> Result<(), Box<dyn std::error::Error>> {
+        self.gena_client.unsubscribe(subscription)
+    }
+
+    /// 解析事件通知消息
+    pub fn parse_event_message(body: &str) -> Result<HashMap<String, String>, Box<dyn std::error::Error>> {
+        GenaClient::parse_event_message(body)
     }
 }
 

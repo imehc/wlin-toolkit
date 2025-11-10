@@ -8,8 +8,10 @@ A pure Rust library for network device discovery and management, supporting UPnP
 
 - ✅ **UPnP (Universal Plug and Play)**
   - SSDP device discovery via UDP multicast
+  - Device上线/下线通知监听 (NOTIFY)
   - HTTP device description retrieval
   - SOAP service control actions
+  - GENA event subscription (subscribe/renew/unsubscribe)
 
 - ✅ **mDNS/Bonjour**
   - Zero-configuration service discovery
@@ -122,6 +124,9 @@ Run the included examples:
 # UPnP device discovery
 cargo run --example upnp_native
 
+# UPnP device notification listening (online/offline events)
+cargo run --example upnp_listen
+
 # mDNS/Bonjour service discovery
 cargo run --example mdns_discover
 
@@ -143,11 +148,17 @@ For more protocol integration possibilities, see [PROTOCOLS.md](PROTOCOLS.md).
 ### UPnP - `UpnpControlPoint`
 
 - `new()` - Create a new control point
+- `with_callback_port(port)` - Create control point with custom callback port for events
 - `discover_devices()` - Discover all UPnP devices on the network
 - `search_devices(target)` - Search for specific device types
 - `get_device_description(location)` - Get detailed device information
 - `invoke_action(url, service, action, args)` - Execute service actions
 - `parse_soap_response(xml)` - Parse SOAP response data
+- `listen_notifications()` - Listen for device online/offline/update notifications
+- `subscribe_events(url, callbacks, timeout)` - Subscribe to service events (GENA)
+- `renew_subscription(subscription, timeout)` - Renew event subscription
+- `unsubscribe(subscription)` - Cancel event subscription
+- `parse_event_message(body)` - Parse GENA event notification message
 
 ### mDNS - `MdnsClient`
 
@@ -155,6 +166,19 @@ For more protocol integration possibilities, see [PROTOCOLS.md](PROTOCOLS.md).
 - `browse(service_type, timeout)` - Browse for specific service types
 - `discover_all(timeout)` - Discover all common service types
 - `resolve(service_type, instance_name)` - Resolve a specific service instance
+- `resolve_with_timeout(service_type, instance_name, timeout)` - Resolve with custom timeout
+- `continuous_browse(service_type, duration)` - Continuously monitor services (returns ServiceCache)
+- `enumerate_service_types(timeout)` - Discover all available service types on network
+
+### mDNS - `ServiceCache`
+
+- `new()` - Create a new service cache
+- `add(service)` - Add a service to the cache
+- `remove(service_type, instance_name)` - Remove a service from cache
+- `get(service_type, instance_name)` - Get a specific service
+- `get_all()` - Get all cached services
+- `len()` - Get number of cached services
+- `is_empty()` - Check if cache is empty
 
 ### SNMP - `SnmpClient`
 
@@ -162,8 +186,17 @@ For more protocol integration possibilities, see [PROTOCOLS.md](PROTOCOLS.md).
 - `with_version(version)` - Set SNMP version (V1, V2c, V3)
 - `with_timeout(timeout)` - Set request timeout
 - `get(target, oid)` - Get a specific OID value
+- `get_next(oid)` - Get next OID value
 - `walk(target, base_oid)` - Walk an OID tree
+- `get_bulk(oids)` - Bulk GET request
+- `set(oid, value)` - Set OID value (requires write community)
 - `get_system_info(target)` - Get common system information
+
+### SNMP - `SnmpTrapListener`
+
+- `new(bind_addr)` - Create TRAP listener (default: 0.0.0.0:1162)
+- `recv()` - Receive TRAP/Inform message
+- `set_timeout(timeout)` - Set receive timeout
 
 ## Common Service Types (mDNS)
 
@@ -197,4 +230,4 @@ MIT
 
 ## Repository
 
-https://github.com/imehc/wlin-toolkit
+https://github.com/imehc/wlin-toolkit/tree/pronet

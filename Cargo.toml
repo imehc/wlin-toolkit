@@ -36,6 +36,11 @@ path = "examples/upnp_native.rs"
 required-features = ["upnp"]
 
 [[example]]
+name = "upnp_listen"
+path = "examples/upnp_listen.rs"
+required-features = ["upnp"]
+
+[[example]]
 name = "mdns_discover"
 path = "examples/mdns_discover.rs"
 required-features = ["mdns"]

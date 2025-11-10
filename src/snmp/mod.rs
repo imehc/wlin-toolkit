@@ -118,6 +118,23 @@ impl SnmpClient {
     pub fn get_bulk(&self, _oids: &[&str]) -> Result<Vec<SnmpResponse>, Box<dyn std::error::Error>> {
         Err("请使用专用 SNMP 库实现".into())
     }
+
+    /// SNMP SET 请求 - 设置参数值
+    ///
+    /// # 参数
+    /// - `oid`: 要设置的 OID
+    /// - `value`: 要设置的值
+    ///
+    /// # 示例 (使用 snmp-mp)
+    /// ```rust,ignore
+    /// use snmp_mp::{SyncSession, Value};
+    ///
+    /// let mut session = SyncSession::new("192.168.1.1:161", b"private", None, 0)?;
+    /// session.set(&[1, 3, 6, 1, 2, 1, 1, 4, 0], Value::String("admin@example.com".into()))?;
+    /// ```
+    pub fn set(&self, _oid: &str, _value: SnmpValue) -> Result<(), Box<dyn std::error::Error>> {
+        Err("请使用专用 SNMP 库实现".into())
+    }
 }
 
 impl Default for SnmpClient {
@@ -134,6 +151,86 @@ pub struct SystemInfo {
     pub sys_location: String,
     pub sys_contact: String,
     pub sys_uptime: u32,
+}
+
+/// SNMP TRAP 消息
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SnmpTrap {
+    /// TRAP 类型
+    pub trap_type: TrapType,
+    /// 发送者 IP 地址
+    pub agent_addr: String,
+    /// 企业 OID
+    pub enterprise: String,
+    /// 通用 TRAP 类型
+    pub generic_trap: u32,
+    /// 特定 TRAP 类型
+    pub specific_trap: u32,
+    /// 时间戳
+    pub timestamp: u32,
+    /// 变量绑定列表
+    pub varbinds: Vec<SnmpResponse>,
+}
+
+/// TRAP 类型
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum TrapType {
+    /// SNMPv1 TRAP
+    V1,
+    /// SNMPv2c/v3 TRAP (也称为 notification)
+    V2,
+}
+
+/// SNMP TRAP 监听器
+///
+/// 用于接收 SNMP TRAP/Inform 通知。
+///
+/// # 示例 (使用 snmp-mp)
+/// ```rust,ignore
+/// use snmp_mp::TrapListener;
+/// use std::net::SocketAddr;
+///
+/// let listener = TrapListener::bind("0.0.0.0:162")?;
+/// loop {
+///     let (trap, from) = listener.recv()?;
+///     println!("Received TRAP from {}: {:?}", from, trap);
+/// }
+/// ```
+pub struct SnmpTrapListener {
+    /// 绑定地址 (通常为 0.0.0.0:162)
+    pub bind_addr: String,
+}
+
+impl SnmpTrapListener {
+    /// 创建 TRAP 监听器
+    ///
+    /// # 参数
+    /// - `bind_addr`: 绑定地址，通常是 "0.0.0.0:162" (需要 root 权限) 或 "0.0.0.0:1162"
+    ///
+    /// 注意：这是一个框架方法。实际实现需要使用专用 SNMP 库。
+    pub fn new(bind_addr: String) -> Result<Self, Box<dyn std::error::Error>> {
+        Ok(Self { bind_addr })
+    }
+
+    /// 接收 TRAP 消息
+    ///
+    /// 注意：这是一个框架方法。实际实现需要使用专用 SNMP 库。
+    pub fn recv(&self) -> Result<SnmpTrap, Box<dyn std::error::Error>> {
+        Err("请使用专用 SNMP 库实现 TRAP 接收".into())
+    }
+
+    /// 设置接收超时
+    pub fn set_timeout(&mut self, _timeout: Duration) -> Result<(), Box<dyn std::error::Error>> {
+        Err("请使用专用 SNMP 库实现".into())
+    }
+}
+
+impl Default for SnmpTrapListener {
+    fn default() -> Self {
+        Self {
+            bind_addr: "0.0.0.0:1162".to_string(),
+        }
+    }
 }
 
 /// 常用的 SNMP OID 定义

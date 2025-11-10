@@ -15,16 +15,18 @@ pub mod snmp;
 pub use upnp::{
     UpnpControlPoint,
     SsdpDevice,
+    SsdpNotification,
     DeviceDescription,
     Device,
     Service,
     DeviceInfo,
     DeviceDescriptionInfo,
+    Subscription,
 };
 
 #[cfg(feature = "mdns")]
-pub use mdns::{MdnsClient, MdnsService};
+pub use mdns::{MdnsClient, MdnsService, ServiceCache};
 
 #[cfg(feature = "snmp")]
-pub use snmp::{SnmpClient, SnmpResponse, SnmpValue, SnmpVersion, SystemInfo};
+pub use snmp::{SnmpClient, SnmpResponse, SnmpValue, SnmpVersion, SystemInfo, SnmpTrap, SnmpTrapListener, TrapType};
 

@@ -8,8 +8,10 @@
 
 - ✅ **UPnP (通用即插即用)**
   - 通过 UDP 组播进行 SSDP 设备发现
+  - 设备上线/下线通知监听 (NOTIFY)
   - HTTP 设备描述获取
   - SOAP 服务控制操作
+  - GENA 事件订阅 (订阅/续订/取消订阅)
 
 - ✅ **mDNS/Bonjour**
   - 零配置服务发现
@@ -122,6 +124,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 # UPnP 设备发现
 cargo run --example upnp_native
 
+# UPnP 设备通知监听（上线/下线事件）
+cargo run --example upnp_listen
+
 # mDNS/Bonjour 服务发现
 cargo run --example mdns_discover
 
@@ -143,11 +148,17 @@ cargo run --example network_discovery --all-features
 ### UPnP - `UpnpControlPoint`
 
 - `new()` - 创建新的控制点
+- `with_callback_port(port)` - 创建带自定义回调端口的控制点（用于事件接收）
 - `discover_devices()` - 发现网络上的所有 UPnP 设备
 - `search_devices(target)` - 搜索特定设备类型
 - `get_device_description(location)` - 获取详细设备信息
 - `invoke_action(url, service, action, args)` - 执行服务操作
 - `parse_soap_response(xml)` - 解析 SOAP 响应数据
+- `listen_notifications()` - 监听设备上线/下线/更新通知
+- `subscribe_events(url, callbacks, timeout)` - 订阅服务事件 (GENA)
+- `renew_subscription(subscription, timeout)` - 续订事件订阅
+- `unsubscribe(subscription)` - 取消事件订阅
+- `parse_event_message(body)` - 解析 GENA 事件通知消息
 
 ### mDNS - `MdnsClient`
 
@@ -155,6 +166,19 @@ cargo run --example network_discovery --all-features
 - `browse(service_type, timeout)` - 浏览特定服务类型
 - `discover_all(timeout)` - 发现所有常见服务类型
 - `resolve(service_type, instance_name)` - 解析特定服务实例
+- `resolve_with_timeout(service_type, instance_name, timeout)` - 使用自定义超时解析服务
+- `continuous_browse(service_type, duration)` - 持续监控服务（返回 ServiceCache）
+- `enumerate_service_types(timeout)` - 发现网络上所有可用的服务类型
+
+### mDNS - `ServiceCache`
+
+- `new()` - 创建新的服务缓存
+- `add(service)` - 添加服务到缓存
+- `remove(service_type, instance_name)` - 从缓存中移除服务
+- `get(service_type, instance_name)` - 获取特定服务
+- `get_all()` - 获取所有缓存的服务
+- `len()` - 获取缓存的服务数量
+- `is_empty()` - 检查缓存是否为空
 
 ### SNMP - `SnmpClient`
 
@@ -162,8 +186,17 @@ cargo run --example network_discovery --all-features
 - `with_version(version)` - 设置 SNMP 版本 (V1, V2c, V3)
 - `with_timeout(timeout)` - 设置请求超时
 - `get(target, oid)` - 获取特定 OID 值
+- `get_next(oid)` - 获取下一个 OID 值
 - `walk(target, base_oid)` - 遍历 OID 树
+- `get_bulk(oids)` - 批量 GET 请求
+- `set(oid, value)` - 设置 OID 值（需要写社区字符串）
 - `get_system_info(target)` - 获取常用系统信息
+
+### SNMP - `SnmpTrapListener`
+
+- `new(bind_addr)` - 创建 TRAP 监听器（默认: 0.0.0.0:1162）
+- `recv()` - 接收 TRAP/Inform 消息
+- `set_timeout(timeout)` - 设置接收超时
 
 ## 常见服务类型 (mDNS)
 
@@ -230,4 +263,4 @@ MIT
 
 ## 仓库地址
 
-https://github.com/imehc/wlin-toolkit
+https://github.com/imehc/wlin-toolkit/tree/pronet
