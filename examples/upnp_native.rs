@@ -1,4 +1,4 @@
-use wlin_upnp::{UpnpControlPoint, SsdpDevice};
+use wlin_pronet::{UpnpControlPoint, SsdpDevice};
 use std::collections::HashMap;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -75,7 +75,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 // 查找 WAN IP 连接服务
-fn find_wan_service(services: &[wlin_upnp::Service]) -> Option<&wlin_upnp::Service> {
+fn find_wan_service(services: &[wlin_pronet::Service]) -> Option<&wlin_pronet::Service> {
     services.iter().find(|s| {
         s.service_type.contains("WANIPConnection") ||
         s.service_type.contains("WANPPPConnection")
@@ -86,7 +86,7 @@ fn find_wan_service(services: &[wlin_upnp::Service]) -> Option<&wlin_upnp::Servi
 fn get_external_ip(
     cp: &UpnpControlPoint,
     device: &SsdpDevice,
-    service: &wlin_upnp::Service,
+    service: &wlin_pronet::Service,
 ) -> Result<String, Box<dyn std::error::Error>> {
     let base_url = &device.location;
     let control_url = if service.control_url.starts_with("http") {

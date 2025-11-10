@@ -1,24 +1,52 @@
 [package]
-name = "wlin-upnp"
-version = "0.3.0"
+name = "wlin_pronet"
+version = "0.0.1"
 edition = "2021"
 license = "MIT"
-repository = "https://github.com/imehc/wlin-toolkit"
-description = "UPnP Control Point implementation in Rust"
-keywords = ["upnp", "ssdp", "soap", "networking", "iot"]
+repository = "https://github.com/imehc/wlin-toolkit/tree/pronet"
+description = "Network device discovery and management (UPnP, mDNS/Bonjour, SNMP)"
+keywords = ["upnp", "mdns", "bonjour", "snmp"]
 categories = ["network-programming"]
 
 [lib]
 crate-type = ["rlib"]
 
+[features]
+default = ["upnp", "mdns"]
+upnp = []
+mdns = ["mdns-sd"]
+snmp = []
+
 [dependencies]
-# UPnP 核心依赖
+# 通用依赖
+serde = { version = "1.0.228", features = ["derive"] }
 tokio = { version = "1.42", features = ["full"] }
+
+# UPnP 依赖
 reqwest = { version = "0.12", features = ["blocking"] }
 quick-xml = { version = "0.37", features = ["serialize"] }
 url = "2.5"
-serde = { version = "1.0.228", features = ["derive"] }
+
+# mDNS/Bonjour 依赖
+mdns-sd = { version = "0.11", optional = true }
 
 [[example]]
 name = "upnp_native"
 path = "examples/upnp_native.rs"
+required-features = ["upnp"]
+
+[[example]]
+name = "mdns_discover"
+path = "examples/mdns_discover.rs"
+required-features = ["mdns"]
+
+[[example]]
+name = "snmp_query"
+path = "examples/snmp_query.rs"
+required-features = ["snmp"]
+
+[[example]]
+name = "network_discovery"
+path = "examples/network_discovery.rs"
+required-features = ["upnp", "mdns"]
+
