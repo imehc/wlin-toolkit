@@ -16,7 +16,7 @@
     "@astrojs/node": "^9.5.1",
     "@types/node": "^24.10.1",
     "astro": "^5.15.9",
-    "rimraf": "^6.1.0",
+    "rimraf": "^6.1.2",
     "typescript": "^5.9.3",
     "vite-plugin-top-level-await": "^1.6.0",
     "vite-plugin-wasm": "^3.5.0"
