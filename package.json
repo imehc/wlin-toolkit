@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@astrojs/node": "^9.5.1",
-    "@types/node": "^24.10.2",
+    "@types/node": "^25.0.0",
     "astro": "^5.16.5",
     "rimraf": "^6.1.2",
     "typescript": "^5.9.3",
