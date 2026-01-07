@@ -13,10 +13,14 @@
     "pre": "sh prepublish.sh"
   },
   "devDependencies": {
-    "@astrojs/node": "^9.5.0",
+    "@astrojs/node": "^9.5.1",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.1.18",
     "@types/node": "^24.10.0",
-    "astro": "^5.15.4",
+    "astro": "^5.16.6",
+    "daisyui": "^5.5.14",
     "rimraf": "^6.1.0",
+    "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
     "vite-plugin-top-level-await": "^1.6.0",
     "vite-plugin-wasm": "^3.5.0"
@@ -25,7 +29,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.17",
-    "tailwindcss": "^4.1.17"
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/svelte": "^7.2.4",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "svelte": "^5.46.1"
   }
 }

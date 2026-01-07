@@ -1,0 +1,59 @@
+---
+import Layout from "./Layout.astro";
+import DocSidebar from "~/components/DocSidebar.astro";
+
+interface Props {
+  title: string;
+  apiName: string;
+  description: string;
+  currentPath?: string;
+}
+
+const { title, apiName, description, currentPath } = Astro.props;
+---
+
+<Layout title={title}>
+  <div class="drawer lg:drawer-open">
+    <input id="doc-drawer" type="checkbox" class="drawer-toggle" />
+
+    <div class="drawer-content flex flex-col">
+      <!-- Navbar for mobile -->
+      <div class="navbar bg-base-100 lg:hidden border-b border-base-300">
+        <div class="flex-none">
+          <label for="doc-drawer" class="btn btn-square btn-ghost">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </label>
+        </div>
+        <div class="flex-1">
+          <h1 class="text-lg font-bold truncate">{apiName}</h1>
+        </div>
+      </div>
+
+      <!-- Page content -->
+      <main class="flex-1">
+        <!-- Header -->
+        <div class="bg-base-200 border-b border-base-300">
+          <div class="max-w-4xl mx-auto px-4 py-6">
+            <h1 class="text-3xl font-bold mb-2">{apiName}</h1>
+            <p class="text-base text-base-content/70">{description}</p>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="max-w-4xl mx-auto px-4 py-6">
+          <article class="prose prose-sm max-w-none">
+            <slot />
+          </article>
+        </div>
+      </main>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="drawer-side">
+      <label for="doc-drawer" class="drawer-overlay"></label>
+      <DocSidebar currentPath={currentPath} />
+    </div>
+  </div>
+</Layout>

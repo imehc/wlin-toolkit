@@ -1,0 +1,116 @@
+---
+layout: ~/layouts/DocLayout.astro
+title: "替换 Undefined - WASM Toolkit"
+apiName: "替换 Undefined"
+description: "将 JavaScript 对象中的 undefined 值替换为 null"
+currentPath: "/docs/data-processing/replace-undefined"
+---
+
+import ReplaceUndefined from "~/components/ReplaceUndefined.tsx";
+
+## 功能说明
+
+`replaceUndefinedWithNull` 函数可以深度遍历 JavaScript 对象和数组，将所有 `undefined` 值替换为 `null`，使其可以被 JSON 序列化。
+
+<ReplaceUndefined client:load />
+
+## API 参考
+
+```typescript
+function replaceUndefinedWithNull(value: any): any
+```
+
+### 参数
+
+- **value**: 要处理的 JavaScript 值（对象、数组或原始值）
+
+### 返回值
+
+返回处理后的值，所有 `undefined` 都被替换为 `null`
+
+### 示例代码
+
+```javascript
+import { replaceUndefinedWithNull } from 'wlin-toolkit';
+
+const data = {
+  name: "John",
+  age: undefined,
+  hobbies: ["reading", undefined]
+};
+
+const cleaned = replaceUndefinedWithNull(data);
+console.log(cleaned);
+// { name: "John", age: null, hobbies: ["reading", null] }
+
+// 可以安全地进行 JSON 序列化
+const json = JSON.stringify(cleaned);
+console.log(json);
+// {"name":"John","age":null,"hobbies":["reading",null]}
+```
+
+## 核心特性
+
+<div className="not-prose grid md:grid-cols-2 gap-4 my-8">
+  <div className="card bg-base-200">
+    <div className="card-body">
+      <h3 className="card-title text-lg">✨ 功能特点</h3>
+      <ul className="list-disc list-inside space-y-1 text-sm">
+        <li>深度遍历对象和数组</li>
+        <li>保持原始数据结构</li>
+        <li>JSON 序列化兼容</li>
+        <li>高性能处理</li>
+      </ul>
+    </div>
+  </div>
+
+  <div className="card bg-base-200">
+    <div className="card-body">
+      <h3 className="card-title text-lg">🎯 应用场景</h3>
+      <ul className="list-disc list-inside space-y-1 text-sm">
+        <li>API 数据清理</li>
+        <li>数据库存储预处理</li>
+        <li>JSON 序列化处理</li>
+        <li>数据格式标准化</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+## 技术实现
+
+此函数使用 Rust 编写并编译为 WebAssembly，提供以下优势：
+
+- **高性能**: WebAssembly 的执行速度接近原生代码
+- **内存安全**: Rust 的所有权系统确保内存安全
+- **零依赖**: 无需额外的 JavaScript 依赖库
+- **跨平台**: 可在所有支持 WebAssembly 的现代浏览器中运行
+
+## 常见问题
+
+### 为什么需要替换 undefined？
+
+在 JavaScript 中，`undefined` 值无法被 `JSON.stringify()` 正确序列化。当对象中存在 `undefined` 值时：
+
+```javascript
+JSON.stringify({ name: "John", age: undefined })
+// 结果: {"name":"John"}
+// age 字段被完全忽略
+```
+
+使用此函数后：
+
+```javascript
+const cleaned = replaceUndefinedWithNull({ name: "John", age: undefined });
+JSON.stringify(cleaned);
+// 结果: {"name":"John","age":null}
+// age 字段被保留为 null
+```
+
+### 是否会修改原始对象？
+
+不会。该函数返回一个新的对象，不会修改传入的原始数据。
+
+### 性能如何？
+
+由于使用 WebAssembly 实现，性能远超纯 JavaScript 实现，特别是在处理大型嵌套数据结构时。

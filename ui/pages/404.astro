@@ -2,73 +2,103 @@
 import Layout from "~/layouts/Layout.astro";
 ---
 
-<Layout title="404 - Not Found">
-	<div class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
-		<div class="flex items-center justify-center min-h-screen px-4">
-			<div class="text-center max-w-md mx-auto">
-				<div class="mb-8">
-					<h1
-						class="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"
-					>
-						404
-					</h1>
-				</div>
-				<div class="mb-8">
-					<h2 class="text-3xl font-bold text-gray-800 mb-4">Page Not Found</h2>
-					<p class="text-gray-600 text-lg leading-relaxed">
-						Sorry, the page you're looking for doesn't exist. It might have been
-						moved, deleted, or you entered the wrong URL.
-					</p>
-				</div>
-				<div class="space-y-4">
-					<a
-						href="/"
-						class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md hover:shadow-lg"
-					>
-						<svg
-							class="w-5 h-5 mr-2"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-							></path>
-						</svg>
-						Go Home
-					</a>
-					<button
-						onclick="history.back()"
-						class="inline-flex items-center px-6 py-3 bg-gray-200 text-gray-700 font-medium rounded-lg hover:bg-gray-300 transition-colors duration-200 ml-4"
-					>
-						<svg
-							class="w-5 h-5 mr-2"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-						</svg>
-						Go Back
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="absolute bottom-0 left-0 w-full">
-			<svg viewBox="0 0 1440 320" class="w-full h-auto">
-				<path
-					fill="#3b82f6"
-					fill-opacity="0.1"
-					d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,133.3C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-				></path>
-			</svg>
-		</div>
-	</div>
+<Layout title="404 - 页面未找到 - WASM Toolkit">
+  <div class="min-h-screen bg-gradient-to-br from-base-200 to-base-300">
+    <div class="hero min-h-screen">
+      <div class="hero-content text-center">
+        <div class="max-w-2xl">
+          <!-- 404 大标题 -->
+          <div class="mb-8">
+            <div class="text-9xl font-bold mb-4">🔍</div>
+            <h1 class="text-8xl md:text-9xl font-bold text-primary mb-2">404</h1>
+          </div>
+
+          <!-- 主要信息卡片 -->
+          <div class="card bg-base-100 shadow-xl mb-8">
+            <div class="card-body">
+              <h2 class="card-title text-3xl justify-center mb-4">页面未找到</h2>
+              <p class="text-lg text-base-content/70 leading-relaxed">
+                抱歉，您访问的页面不存在。可能已被移动、删除，或者您输入了错误的网址。
+              </p>
+            </div>
+          </div>
+
+          <!-- 建议操作 -->
+          <div class="card bg-base-100 shadow-xl mb-8">
+            <div class="card-body">
+              <h3 class="card-title text-xl justify-center mb-4">您可以尝试</h3>
+              <div class="grid md:grid-cols-3 gap-4 text-left">
+                <div class="flex items-start gap-3">
+                  <div class="text-2xl">🏠</div>
+                  <div>
+                    <div class="font-semibold">返回首页</div>
+                    <div class="text-sm text-base-content/70">查看所有可用的 API</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="text-2xl">⬅️</div>
+                  <div>
+                    <div class="font-semibold">返回上一页</div>
+                    <div class="text-sm text-base-content/70">回到之前的页面</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="text-2xl">📚</div>
+                  <div>
+                    <div class="font-semibold">查看文档</div>
+                    <div class="text-sm text-base-content/70">浏览 API 文档</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 操作按钮 -->
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/" class="btn btn-primary btn-lg">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                ></path>
+              </svg>
+              返回首页
+            </a>
+            <button onclick="history.back()" class="btn btn-outline btn-lg">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                ></path>
+              </svg>
+              返回上一页
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 bg-base-200 text-base-content">
+      <div>
+        <p class="text-sm opacity-70">© 2024 WASM Toolkit. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
 </Layout>

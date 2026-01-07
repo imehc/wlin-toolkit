@@ -1,203 +1,187 @@
 ---
 import Layout from "~/layouts/Layout.astro";
+import { apiCategories } from "~/lib/apiCategories";
 ---
 
-<Layout title="WASM Toolkit - API Demo">
-	<div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-		<!-- Header -->
-		<header class="bg-white shadow-sm border-b border-gray-200 h-14">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-				<div class="flex items-center justify-center h-full">
-					<h1 class="text-2xl sm:text-3xl font-bold text-gray-900">
-						🦀 WASM Toolkit
-					</h1>
-				</div>
-			</div>
-		</header>
+<Layout title="WASM Toolkit - 高性能 Web 工具库">
+  <div class="min-h-screen bg-gradient-to-br from-base-200 to-base-300">
+    <!-- Hero Section -->
+    <div class="hero min-h-[60vh] bg-base-100">
+      <div class="hero-content text-center">
+        <div class="max-w-3xl">
+          <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            🦀 WASM Toolkit
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 text-base-content/80">
+            基于 Rust 和 WebAssembly 构建的高性能 Web 工具库
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 mb-8">
+            <div class="badge badge-lg badge-primary">高性能</div>
+            <div class="badge badge-lg badge-secondary">类型安全</div>
+            <div class="badge badge-lg badge-accent">零依赖</div>
+            <div class="badge badge-lg badge-info">跨平台</div>
+          </div>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#apis" class="btn btn-primary btn-lg">
+              查看 API 文档
+            </a>
+            <a
+              href="https://github.com/yourusername/wasm-toolkit"
+              class="btn btn-outline btn-lg"
+              target="_blank"
+              rel="noopener"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<!-- API Cards -->
-		<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-			<!-- Brief intro -->
-			<div class="text-center mb-8">
-				<p class="text-lg text-gray-600 max-w-2xl mx-auto mb-4">
-					使用 Rust 和 WebAssembly 构建的高性能工具包
-				</p>
-				<div class="flex justify-center items-center space-x-6 text-sm text-gray-500">
-					<div class="flex items-center">
-						<span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-						2 个可用 API
-					</div>
-					<div class="flex items-center">
-						<span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-						零依赖
-					</div>
-					<div class="flex items-center">
-						<span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-						高性能
-					</div>
-				</div>
-			</div>
-			
-			<div class="grid gap-8 md:grid-cols-2">
-				<!-- Replace Undefined API -->
-				<a href="/demo/replace-undefined" class="group block">
-					<div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
-						<div class="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-6">
-							<div class="flex items-center justify-between">
-								<div>
-									<div class="flex items-center mb-2">
-										<svg class="w-8 h-8 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
-										</svg>
-										<h2 class="text-2xl font-bold text-white">Replace Undefined</h2>
-									</div>
-									<p class="text-blue-100">
-										将 JavaScript 对象中的 undefined 值替换为 null
-									</p>
-								</div>
-								<div class="text-4xl opacity-50">🔄</div>
-							</div>
-						</div>
-						
-						<div class="p-6">
-							<div class="space-y-3">
-								<div class="flex items-center text-sm text-gray-600">
-									<svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									深度遍历对象和数组
-								</div>
-								<div class="flex items-center text-sm text-gray-600">
-									<svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									保持原始数据结构
-								</div>
-								<div class="flex items-center text-sm text-gray-600">
-									<svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									JSON 序列化友好
-								</div>
-							</div>
-							
-							<div class="mt-6 flex items-center justify-between">
-								<div class="flex items-center text-sm text-gray-500">
-									<span class="inline-block w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-									数据处理工具
-								</div>
-								<div class="flex items-center text-blue-600 text-sm font-medium group-hover:text-blue-700">
-									立即体验
-									<svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-									</svg>
-								</div>
-							</div>
-						</div>
-					</div>
-				</a>
+    <!-- Features Section -->
+    <div class="py-20 px-4">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">核心特性</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="card bg-base-100 shadow-xl">
+            <div class="card-body items-center text-center">
+              <div class="text-5xl mb-4">⚡</div>
+              <h3 class="card-title">高性能</h3>
+              <p>WebAssembly 提供接近原生的执行速度，性能是纯 JavaScript 的数倍</p>
+            </div>
+          </div>
 
-				<!-- Digit Uppercase API -->
-				<a href="/demo/digit-uppercase" class="group block">
-					<div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
-						<div class="bg-gradient-to-r from-green-500 to-green-600 px-6 py-6">
-							<div class="flex items-center justify-between">
-								<div>
-									<div class="flex items-center mb-2">
-										<svg class="w-8 h-8 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
-										</svg>
-										<h2 class="text-2xl font-bold text-white">数字转大写</h2>
-									</div>
-									<p class="text-green-100">
-										将阿拉伯数字转换为中文大写格式
-									</p>
-								</div>
-								<div class="text-4xl opacity-50">🔤</div>
-							</div>
-						</div>
-						
-						<div class="p-6">
-							<div class="space-y-3">
-								<div class="flex items-center text-sm text-gray-600">
-									<svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									支持小数和整数
-								</div>
-								<div class="flex items-center text-sm text-gray-600">
-									<svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									标准中文大写格式
-								</div>
-								<div class="flex items-center text-sm text-gray-600">
-									<svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-										<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-									</svg>
-									财务和正式文档适用
-								</div>
-							</div>
-							
-							<div class="mt-6 flex items-center justify-between">
-								<div class="flex items-center text-sm text-gray-500">
-									<span class="inline-block w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-									文本转换工具
-								</div>
-								<div class="flex items-center text-green-600 text-sm font-medium group-hover:text-green-700">
-									立即体验
-									<svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-									</svg>
-								</div>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
+          <div class="card bg-base-100 shadow-xl">
+            <div class="card-body items-center text-center">
+              <div class="text-5xl mb-4">🔒</div>
+              <h3 class="card-title">类型安全</h3>
+              <p>Rust 强大的类型系统确保运行时安全，减少错误</p>
+            </div>
+          </div>
 
-			<!-- Features Section -->
-			<div class="mt-16 bg-white rounded-xl shadow-lg border border-gray-100 p-8">
-				<div class="text-center mb-8">
-					<h3 class="text-2xl font-bold text-gray-900 mb-3">
-						为什么选择 WASM Toolkit？
-					</h3>
-					<p class="text-gray-600 max-w-2xl mx-auto">
-						基于 Rust 的 WebAssembly 实现，为现代 Web 应用提供高性能的数据处理能力
-					</p>
-				</div>
-				
-				<div class="grid md:grid-cols-4 gap-6">
-					<div class="text-center">
-						<div class="bg-orange-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
-							<span class="text-2xl">⚡</span>
-						</div>
-						<h4 class="font-semibold text-gray-900 mb-2">高性能</h4>
-						<p class="text-sm text-gray-600">WebAssembly 提供接近原生的执行速度</p>
-					</div>
-					<div class="text-center">
-						<div class="bg-blue-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
-							<span class="text-2xl">🔒</span>
-						</div>
-						<h4 class="font-semibold text-gray-900 mb-2">类型安全</h4>
-						<p class="text-sm text-gray-600">Rust 类型系统确保运行时安全</p>
-					</div>
-					<div class="text-center">
-						<div class="bg-green-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
-							<span class="text-2xl">📦</span>
-						</div>
-						<h4 class="font-semibold text-gray-900 mb-2">零依赖</h4>
-						<p class="text-sm text-gray-600">无需额外依赖，开箱即用</p>
-					</div>
-					<div class="text-center">
-						<div class="bg-purple-100 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
-							<span class="text-2xl">🌐</span>
-						</div>
-						<h4 class="font-semibold text-gray-900 mb-2">跨平台</h4>
-						<p class="text-sm text-gray-600">在任何现代浏览器中运行</p>
-					</div>
-				</div>
-			</div>
-		</main>
-	</div>
+          <div class="card bg-base-100 shadow-xl">
+            <div class="card-body items-center text-center">
+              <div class="text-5xl mb-4">📦</div>
+              <h3 class="card-title">零依赖</h3>
+              <p>无需额外依赖库，体积小巧，开箱即用</p>
+            </div>
+          </div>
+
+          <div class="card bg-base-100 shadow-xl">
+            <div class="card-body items-center text-center">
+              <div class="text-5xl mb-4">🌐</div>
+              <h3 class="card-title">跨平台</h3>
+              <p>在所有现代浏览器中运行，无需额外配置</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- API Categories Section -->
+    <div id="apis" class="py-20 px-4 bg-base-100">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4">API 文档</h2>
+        <p class="text-center text-base-content/70 mb-12 max-w-2xl mx-auto">
+          选择下方分类查看详细的 API 文档和在线演示
+        </p>
+
+        <div class="space-y-12">
+          {apiCategories.map((category) => (
+            <div>
+              <div class="flex items-center gap-3 mb-6">
+                <span class="text-4xl">{category.icon}</span>
+                <h3 class="text-2xl font-bold">{category.name}</h3>
+                <div class={`badge badge-${category.color}`}>
+                  {category.items.length} 个 API
+                </div>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                {category.items.map((item) => (
+                  <a href={item.path} class="group">
+                    <div class="card bg-base-200 hover:bg-base-300 transition-all duration-200 hover:shadow-xl group-hover:-translate-y-1">
+                      <div class="card-body">
+                        <h4 class="card-title text-xl group-hover:text-primary transition-colors">
+                          {item.name}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 opacity-0 group-hover:opacity-100 transition-opacity"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        </h4>
+                        <p class="text-base-content/70">{item.description}</p>
+                        <div class="card-actions justify-end mt-4">
+                          <div class="badge badge-outline">文档</div>
+                          <div class="badge badge-outline">演示</div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Installation Section -->
+    <div class="py-20 px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">快速开始</h2>
+
+        <div class="space-y-6">
+          <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+              <h3 class="card-title">安装</h3>
+              <div class="mockup-code">
+                <pre data-prefix="$"><code>npm install wlin-toolkit</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+              <h3 class="card-title">使用示例</h3>
+              <div class="mockup-code">
+                <pre data-prefix="1"><code>import &#123; digitUppercase, replaceUndefinedWithNull &#125; from 'wlin-toolkit';</code></pre>
+                <pre data-prefix="2"><code></code></pre>
+                <pre data-prefix="3"><code>// 数字转大写</code></pre>
+                <pre data-prefix="4"><code>const result = digitUppercase(123.45);</code></pre>
+                <pre data-prefix="5"><code>console.log(result); // "壹佰贰拾叁元肆角伍分"</code></pre>
+                <pre data-prefix="6"><code></code></pre>
+                <pre data-prefix="7"><code>// 替换 undefined</code></pre>
+                <pre data-prefix="8"><code>const cleaned = replaceUndefinedWithNull(&#123; name: "John", age: undefined &#125;);</code></pre>
+                <pre data-prefix="9"><code>console.log(cleaned); // &#123; name: "John", age: null &#125;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer footer-center p-10 bg-base-200 text-base-content">
+      <div>
+        <div class="grid grid-flow-col gap-4">
+          <span class="text-sm opacity-70">
+            Built with Rust 🦀 + WebAssembly ⚡ + Astro 🚀
+          </span>
+        </div>
+        <div class="mt-4">
+          <p class="text-sm opacity-70">© 2024 WASM Toolkit. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
 </Layout>
