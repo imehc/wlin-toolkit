@@ -31,7 +31,7 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/react": "^4.4.2",
-    "@astrojs/svelte": "^7.2.4",
+    "@astrojs/svelte": "^7.2.5",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "react": "^19.2.3",
