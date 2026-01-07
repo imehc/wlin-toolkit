@@ -19,7 +19,7 @@
     "@types/node": "^24.10.0",
     "astro": "^5.16.6",
     "daisyui": "^5.5.14",
-    "rimraf": "^6.1.0",
+    "rimraf": "^6.1.2",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
     "vite-plugin-top-level-await": "^1.6.0",

@@ -32,7 +32,7 @@ jobs:
         node-version: [20.x]
 
     steps:
-    - uses: actions/checkout@v5 # 检出代码
+    - uses: actions/checkout@v6 # 检出代码
 
     - uses: pnpm/action-setup@v4
       with:
@@ -49,7 +49,7 @@ jobs:
       run: cargo --version
 
     - name: Cache wasm-pack and pnpm dependencies
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: |
           ~/.cargo/bin/wasm-pack
