@@ -36,6 +36,6 @@
     "@types/react-dom": "^19.2.3",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "svelte": "^5.48.2"
+    "svelte": "^5.48.3"
   }
 }
