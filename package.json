@@ -15,7 +15,7 @@
   "devDependencies": {
     "@astrojs/node": "^9.5.3",
     "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.1.18",
+    "@tailwindcss/vite": "^4.2.0",
     "@types/node": "^25.2.3",
     "astro": "^5.17.2",
     "daisyui": "^5.5.18",
