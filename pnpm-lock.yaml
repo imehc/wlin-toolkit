@@ -16,7 +16,7 @@ importers:
         version: 5.0.3(@types/node@25.5.2)(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(jiti@2.6.1)(lightningcss@1.32.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@astrojs/svelte':
         specifier: ^7.2.5
-        version: 7.2.5(@types/node@25.5.2)(astro@5.18.1(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.32.0)(svelte@5.55.2)(typescript@5.9.3)
+        version: 7.2.5(@types/node@25.5.2)(astro@5.18.1(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.32.0)(svelte@5.55.3(@typescript-eslint/types@8.58.1))(typescript@5.9.3)
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
@@ -30,8 +30,8 @@ importers:
         specifier: ^19.2.5
         version: 19.2.5(react@19.2.5)
       svelte:
-        specifier: ^5.55.2
-        version: 5.55.2
+        specifier: ^5.55.3
+        version: 5.55.3(@typescript-eslint/types@8.58.1)
     devDependencies:
       '@astrojs/node':
         specifier: ^9.5.5
@@ -1629,8 +1629,8 @@ packages:
   devalue@5.6.4:
     resolution: {integrity: sha512-Gp6rDldRsFh/7XuouDbxMH3Mx8GMCcgzIb1pDTvNyn8pZGQ22u+Wa+lGV9dQCltFQ7uVw0MhRyb8XDskNFOReA==}
 
-  devalue@5.7.0:
-    resolution: {integrity: sha512-qCvc8m7cImp1QDCsiY+C2EdSBWSj7Ucfoq87scSdYboDiIKdvMtFbH1U2VReBls6WMhMaUOoK3ZJEDNG/7zm3w==}
+  devalue@5.7.1:
+    resolution: {integrity: sha512-MUbZ586EgQqdRnC4yDrlod3BEdyvE4TapGYHMW2CiaW+KkkFmWEFqBUaLltEZCGi0iFXCEjRF0OjF0DV2QHjOA==}
 
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
@@ -1725,8 +1725,13 @@ packages:
   esm-env@1.2.2:
     resolution: {integrity: sha512-Epxrv+Nr/CaL4ZcFGPJIYLWFom+YeV1DqMLHJoEd9SYRxNbaFruBwfEX/kkHUJf55j2+TUbmDcmuilbP1TmXHA==}
 
-  esrap@2.2.4:
-    resolution: {integrity: sha512-suICpxAmZ9A8bzJjEl/+rLJiDKC0X4gYWUxT6URAWBLvlXmtbZd5ySMu/N2ZGEtMCAmflUDPSehrP9BQcsGcSg==}
+  esrap@2.2.5:
+    resolution: {integrity: sha512-/yLB1538mag+dn0wsePTe8C0rDIjUOaJpMs2McodSzmM2msWcZsBSdRtg6HOBt0A/r82BN+Md3pgwSc/uWt2Ig==}
+    peerDependencies:
+      '@typescript-eslint/types': ^8.2.0
+    peerDependenciesMeta:
+      '@typescript-eslint/types':
+        optional: true
 
   estree-util-attach-comments@3.0.0:
     resolution: {integrity: sha512-cKUwm/HUcTDsYh/9FgnuFqpfquUbwIqwKM26BVCGDPVgvaCl/nDCCjUfiLlx6lsEZ3Z4RFxNbOQ60pkaEwFxGw==}
@@ -2529,8 +2534,8 @@ packages:
       svelte: ^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0
       typescript: ^4.9.4 || ^5.0.0
 
-  svelte@5.55.2:
-    resolution: {integrity: sha512-z41M/hi0ZPTzrwVKLvB/R1/Oo08gL1uIib8HZ+FncqxxtY9MLb01emg2fqk+WLZ/lNrrtNDFh7BZLDxAHvMgLw==}
+  svelte@5.55.3:
+    resolution: {integrity: sha512-dS1N+i3bA1v+c4UDb750MlN5vCO82G6vxh8HeTsPsTdJ1BLsN1zxSyDlIdBBqUjqZ/BxEwM8UrFf98aaoVnZFQ==}
     engines: {node: '>=18'}
 
   svgo@4.0.1:
@@ -2968,12 +2973,12 @@ snapshots:
       - tsx
       - yaml
 
-  '@astrojs/svelte@7.2.5(@types/node@25.5.2)(astro@5.18.1(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.32.0)(svelte@5.55.2)(typescript@5.9.3)':
+  '@astrojs/svelte@7.2.5(@types/node@25.5.2)(astro@5.18.1(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.32.0)(svelte@5.55.3(@typescript-eslint/types@8.58.1))(typescript@5.9.3)':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.55.2)(vite@7.3.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0))
+      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.55.3(@typescript-eslint/types@8.58.1))(vite@7.3.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0))
       astro: 5.18.1(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1)(typescript@5.9.3)
-      svelte: 5.55.2
-      svelte2tsx: 0.7.46(svelte@5.55.2)(typescript@5.9.3)
+      svelte: 5.55.3(@typescript-eslint/types@8.58.1)
+      svelte2tsx: 0.7.46(svelte@5.55.3(@typescript-eslint/types@8.58.1))(typescript@5.9.3)
       typescript: 5.9.3
       vite: 6.4.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)
     transitivePeerDependencies:
@@ -3712,23 +3717,23 @@ snapshots:
     dependencies:
       acorn: 8.16.0
 
-  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.55.2)(vite@6.4.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)))(svelte@5.55.2)(vite@7.3.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0))':
+  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.55.3(@typescript-eslint/types@8.58.1))(vite@6.4.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)))(svelte@5.55.3(@typescript-eslint/types@8.58.1))(vite@6.4.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.55.2)(vite@7.3.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0))
+      '@sveltejs/vite-plugin-svelte': 5.1.1(svelte@5.55.3(@typescript-eslint/types@8.58.1))(vite@7.3.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0))
       debug: 4.4.3
-      svelte: 5.55.2
-      vite: 7.3.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)
+      svelte: 5.55.3(@typescript-eslint/types@8.58.1)
+      vite: 6.4.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.55.2)(vite@7.3.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0))':
+  '@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.55.3(@typescript-eslint/types@8.58.1))(vite@7.3.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.55.2)(vite@6.4.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)))(svelte@5.55.2)(vite@7.3.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0))
+      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.1.1(svelte@5.55.3(@typescript-eslint/types@8.58.1))(vite@6.4.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)))(svelte@5.55.3(@typescript-eslint/types@8.58.1))(vite@6.4.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0))
       debug: 4.4.3
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.21
-      svelte: 5.55.2
+      svelte: 5.55.3(@typescript-eslint/types@8.58.1)
       vite: 7.3.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)
       vitefu: 1.1.2(vite@7.3.2(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0))
     transitivePeerDependencies:
@@ -3932,7 +3937,8 @@ snapshots:
 
   '@types/unist@3.0.3': {}
 
-  '@typescript-eslint/types@8.58.1': {}
+  '@typescript-eslint/types@8.58.1':
+    optional: true
 
   '@ungap/structured-clone@1.3.0': {}
 
@@ -4220,7 +4226,7 @@ snapshots:
 
   devalue@5.6.4: {}
 
-  devalue@5.7.0: {}
+  devalue@5.7.1: {}
 
   devlop@1.1.0:
     dependencies:
@@ -4380,9 +4386,10 @@ snapshots:
 
   esm-env@1.2.2: {}
 
-  esrap@2.2.4:
+  esrap@2.2.5(@typescript-eslint/types@8.58.1):
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
+    optionalDependencies:
       '@typescript-eslint/types': 8.58.1
 
   estree-util-attach-comments@3.0.0:
@@ -5652,14 +5659,14 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.7
 
-  svelte2tsx@0.7.46(svelte@5.55.2)(typescript@5.9.3):
+  svelte2tsx@0.7.46(svelte@5.55.3(@typescript-eslint/types@8.58.1))(typescript@5.9.3):
     dependencies:
       dedent-js: 1.0.1
       scule: 1.3.0
-      svelte: 5.55.2
+      svelte: 5.55.3(@typescript-eslint/types@8.58.1)
       typescript: 5.9.3
 
-  svelte@5.55.2:
+  svelte@5.55.3(@typescript-eslint/types@8.58.1):
     dependencies:
       '@jridgewell/remapping': 2.3.5
       '@jridgewell/sourcemap-codec': 1.5.5
@@ -5670,13 +5677,15 @@ snapshots:
       aria-query: 5.3.1
       axobject-query: 4.1.0
       clsx: 2.1.1
-      devalue: 5.7.0
+      devalue: 5.7.1
       esm-env: 1.2.2
-      esrap: 2.2.4
+      esrap: 2.2.5(@typescript-eslint/types@8.58.1)
       is-reference: 3.0.3
       locate-character: 3.0.0
       magic-string: 0.30.21
       zimmerframe: 1.1.4
+    transitivePeerDependencies:
+      - '@typescript-eslint/types'
 
   svgo@4.0.1:
     dependencies:
