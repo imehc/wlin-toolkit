@@ -15,8 +15,8 @@ importers:
         specifier: ^5.0.5
         version: 5.0.5(@types/node@25.9.1)(@types/react-dom@19.2.3(@types/react@19.2.15))(@types/react@19.2.15)(jiti@2.7.0)(lightningcss@1.32.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@astrojs/svelte':
-        specifier: ^8.1.1
-        version: 8.1.1(@types/node@25.9.1)(astro@6.3.7(@types/node@25.9.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.4))(jiti@2.7.0)(lightningcss@1.32.0)(svelte@5.55.9(@typescript-eslint/types@8.58.1))(typescript@6.0.3)
+        specifier: ^8.1.2
+        version: 8.1.2(@types/node@25.9.1)(astro@6.3.7(@types/node@25.9.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.4))(jiti@2.7.0)(lightningcss@1.32.0)(svelte@5.55.9(@typescript-eslint/types@8.58.1))(typescript@6.0.3)
       '@types/react':
         specifier: ^19.2.15
         version: 19.2.15
@@ -102,8 +102,8 @@ packages:
       react: ^17.0.2 || ^18.0.0 || ^19.0.0
       react-dom: ^17.0.2 || ^18.0.0 || ^19.0.0
 
-  '@astrojs/svelte@8.1.1':
-    resolution: {integrity: sha512-/9sgVenHRoGRhENjLA585qPBFIECl9u7LXu0H7PeB0LW98Pa2nxvvei14CszuaYhwMoeXwDKAX211M3L6WIObw==}
+  '@astrojs/svelte@8.1.2':
+    resolution: {integrity: sha512-L4eBoTY+DdgyH1g8pmKJxidRSvdk+NbkyJt5+f8EtdyJtPdxogeCyG3eEDmlIqqXxzNqLg7k/tYCjfBQ4kDMRA==}
     engines: {node: '>=22.12.0'}
     peerDependencies:
       astro: ^6.0.0
@@ -2400,7 +2400,7 @@ snapshots:
       - tsx
       - yaml
 
-  '@astrojs/svelte@8.1.1(@types/node@25.9.1)(astro@6.3.7(@types/node@25.9.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.4))(jiti@2.7.0)(lightningcss@1.32.0)(svelte@5.55.9(@typescript-eslint/types@8.58.1))(typescript@6.0.3)':
+  '@astrojs/svelte@8.1.2(@types/node@25.9.1)(astro@6.3.7(@types/node@25.9.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.4))(jiti@2.7.0)(lightningcss@1.32.0)(svelte@5.55.9(@typescript-eslint/types@8.58.1))(typescript@6.0.3)':
     dependencies:
       '@sveltejs/vite-plugin-svelte': 6.2.4(svelte@5.55.9(@typescript-eslint/types@8.58.1))(vite@7.3.3(@types/node@25.9.1)(jiti@2.7.0)(lightningcss@1.32.0))
       astro: 6.3.7(@types/node@25.9.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.4)
