@@ -34,8 +34,8 @@ importers:
         version: 5.56.3(@typescript-eslint/types@8.58.1)
     devDependencies:
       '@astrojs/node':
-        specifier: ^10.1.3
-        version: 10.1.3(astro@6.4.6(@types/node@25.9.3)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.61.1))
+        specifier: ^10.1.4
+        version: 10.1.4(astro@6.4.6(@types/node@25.9.3)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.61.1))
       '@tailwindcss/typography':
         specifier: ^0.5.20
         version: 0.5.20(tailwindcss@4.3.0)
@@ -88,8 +88,8 @@ packages:
       '@astrojs/markdown-satteri':
         optional: true
 
-  '@astrojs/node@10.1.3':
-    resolution: {integrity: sha512-NybvdqXFwUbTkaJ8OhDmkrXK+cdpXR+KhyiaBduVVqzAopT70J9QVah8Iz2vt24+wF6PqH1oxElnQlU4OwcBLA==}
+  '@astrojs/node@10.1.4':
+    resolution: {integrity: sha512-itV568ttlrpwNsutO+KPziqKfzTPlAIXMADlpBi3VeQ3liivRKKKG+jm+IjLMKvYGkxd0QnClKVCBP4i3gpwQQ==}
     peerDependencies:
       astro: ^6.3.0
 
@@ -2538,7 +2538,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/node@10.1.3(astro@6.4.6(@types/node@25.9.3)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.61.1))':
+  '@astrojs/node@10.1.4(astro@6.4.6(@types/node@25.9.3)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.61.1))':
     dependencies:
       '@astrojs/internal-helpers': 0.10.0
       astro: 6.4.6(@types/node@25.9.3)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.61.1)
