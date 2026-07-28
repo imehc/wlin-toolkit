@@ -16,7 +16,7 @@
     "@astrojs/node": "^11.0.2",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.1.1",
+    "@types/node": "^26.1.2",
     "astro": "^7.1.4",
     "daisyui": "^5.7.4",
     "rimraf": "^6.1.3",
