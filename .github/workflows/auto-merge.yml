@@ -1,19 +1,67 @@
 name: Auto Merge
 
 on:
-  pull_request:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+    branches: [main]
 
 jobs:
+  build-ui:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6.0.10
+        with:
+          version: 10
+
+      - name: Use Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 20.x
+          cache: 'pnpm'
+
+      - name: Check Rust version
+        run: cargo --version
+
+      - name: Cache wasm-pack and pnpm dependencies
+        uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cargo/bin/wasm-pack
+            ~/.cache/.wasm-pack
+            ~/.pnpm-store
+          key: |
+            ${{ runner.os }}-wasm-pack-${{ hashFiles('**/Cargo.lock') }}
+            ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-wasm-pack-
+            ${{ runner.os }}-pnpm-
+
+      - name: Install wasm-pack
+        run: |
+          command -v wasm-pack >/dev/null || curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build UI
+        run: pnpm build:ui
+
   automerge:
     runs-on: ubuntu-latest
+    needs: build-ui
+    if: >-
+      !cancelled() &&
+      !contains(needs.*.result, 'failure') &&
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      github.repository == 'imehc/wlin-toolkit'
     permissions:
       pull-requests: write
       contents: write
     steps:
-      - uses: fastify/github-action-merge-dependabot@v3
-      # 或
-      # - uses: actions/checkout@v4
-      # - uses: ahmadnassri/action-dependabot-auto-merge@v2
-        with:
-          # target: minor
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Enable auto-merge for Dependabot PR
+        run: gh pr merge "$PR_URL" --auto --merge
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

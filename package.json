@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "description": "A JavaScript toolkit for WebAssembly integration with Rust",
   "main": "pkg/wlin_toolkit.js",
+  "type": "module",
   "scripts": {
     "build:npm": "rimraf pkg && wasm-pack build && npm run pre",
     "build:ui": "wasm-pack build --target bundler && astro build",
