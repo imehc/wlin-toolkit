@@ -1,6 +1,6 @@
 {
   "buildCommand": "./build.sh",
-  "installCommand": "npm install",
+  "installCommand": "pnpm install",
   "outputDirectory": "dist",
   "framework": "astro",
   "build": {
