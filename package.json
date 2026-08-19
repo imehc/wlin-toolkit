@@ -14,7 +14,7 @@
     "pre": "sh prepublish.sh"
   },
   "devDependencies": {
-    "@astrojs/node": "^11.1.0",
+    "@astrojs/node": "^11.1.2",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.2.0",
