@@ -33,9 +33,9 @@
     "@astrojs/mdx": "^8.0.1",
     "@astrojs/react": "^6.0.5",
     "@astrojs/svelte": "^9.0.1",
-    "@types/react": "^19.2.18",
+    "@types/react": "^19.3.0",
     "@types/react-dom": "^19.2.7",
-    "react": "^19.2.8",
+    "react": "^19.3.0",
     "react-dom": "^19.2.8",
     "svelte": "^5.57.0"
   }
