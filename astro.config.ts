@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config'
 import { fileURLToPath } from 'url'
 import { dirname, resolve } from 'path'
 import wasm from "vite-plugin-wasm";
-import topLevelAwait from "vite-plugin-top-level-await";
 import tailwindcss from '@tailwindcss/vite';
 
 import mdx from '@astrojs/mdx';
@@ -21,7 +20,7 @@ export default defineConfig({
   outDir: './dist',
   integrations: [mdx(), react(), svelte()],
   vite: {
-    plugins: [wasm(), topLevelAwait(), tailwindcss()],
+    plugins: [wasm(), tailwindcss()],
     server: {
       fs: {
         allow: ['..']
