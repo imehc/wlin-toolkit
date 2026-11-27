@@ -9,7 +9,11 @@ jobs:
   build-ui:
     runs-on: ubuntu-latest
     steps:
+      # pull_request_target 默认检出 base 分支，必须显式指向 PR head，
+      # 否则校验的是 main 而不是 PR 本身（曾被 dependabot PR 借此在损坏状态下合入）
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - uses: pnpm/action-setup@v6.1.1
         with:
