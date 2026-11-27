@@ -6,17 +6,59 @@
 
 version: 2
 updates:
-  - package-ecosystem: "github-actions" 
-    directory: "/" 
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
       interval: "daily"
+    groups:
+      actions:
+        patterns:
+          - "*"
 
   - package-ecosystem: "npm"
     versioning-strategy: increase
     directory: "/"
     schedule:
       interval: "daily"
-    
+    groups:
+      # react 与 react-dom 必须同版本（Astro SSR 构建会硬校验），
+      # @types/* 也一并带上，避免类型与运行时脱节
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      astro:
+        patterns:
+          - "astro"
+          - "@astrojs/*"
+      tailwind:
+        patterns:
+          - "tailwindcss"
+          - "@tailwindcss/*"
+          - "daisyui"
+      types:
+        patterns:
+          - "@types/*"
+      # 兜底：其余依赖的 minor/patch 合并成一个 PR，减少 PR 数量
+      minor-patch:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+        exclude-patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+          - "astro"
+          - "@astrojs/*"
+          - "tailwindcss"
+          - "@tailwindcss/*"
+          - "daisyui"
+          - "@types/*"
+
   - package-ecosystem: "cargo"
     # versioning-strategy: lockfile-only
     directory: "/"
